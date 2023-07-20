@@ -68,8 +68,8 @@ CREATE OR REPLACE TABLE Orders (
     totalDue decimal(19,2) not NULL,
     paymentMethod varchar(50) not NULL,
     PRIMARY KEY (orderID),
-    FOREIGN KEY (userID) REFERENCES Users(userID),
-    FOREIGN KEY (bookID) REFERENCES Books(bookID)
+    FOREIGN KEY (bookID) REFERENCES Books(bookID) ON DELETE CASCADE,
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
 );
 
 -- Insert values into the Orders table
@@ -110,8 +110,8 @@ CREATE OR REPLACE TABLE Reviews (
     rating int not NULL,
     Description text not NULL,
     PRIMARY KEY (reviewID),
-    FOREIGN KEY (userID) REFERENCES Users(userID),
-    FOREIGN KEY (bookID) REFERENCES Books(bookID)
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE,
+    FOREIGN KEY (bookID) REFERENCES Books(bookID) ON DELETE CASCADE
 );
 
 -- Insert values into the Reviews table
