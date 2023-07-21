@@ -8,12 +8,13 @@ PORT        = 8001;                 // Set a port number at the top so it's easy
 const path = require('path');
 
 // Database
-var db = require('./db-connector')
+// var db = require('./db-connector')
 
 https://www.digitalocean.com/community/tutorials/use-expressjs-to-deliver-html-files
 app.get('/style.css', function(req, res) {
     res.sendFile(path.join(__dirname + '/style.css'));
 })
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
