@@ -1,0 +1,16 @@
+h1 {
+    font-size: 40px;
+    padding-left: 10px;r
+}
+
+body {
+    font-family: 'DM Sans';
+}
+
+a {
+    font-size: 20px;
+}
+
+p a {
+    padding: 0px 10px;
+}
