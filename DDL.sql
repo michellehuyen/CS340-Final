@@ -29,7 +29,8 @@ VALUES
     "The Handmaid's Tale",
     "Margaret Atwood",
     "Science fiction",
-    "17.49"
+    "17.49",
+    "Available"
 );
 
 -- Create Users table
@@ -62,7 +63,7 @@ CREATE OR REPLACE TABLE Orders (
     city varchar(50) not NULL,
     state varchar(50) not NULL,
     postalCode varchar(50) not NULL,
-    orderDate datetime not NULL,
+    orderDate date not NULL,
     orderStatus varchar(50) not NULL,
     quantity int not NULL,
     totalDue decimal(19,2) not NULL,
@@ -95,7 +96,7 @@ VALUES
     "San Ramon",
     "California",
     "94583",
-    "20230713",
+    "2023-07-13",
     "Pending",
     "2",
     "32.94"
@@ -120,7 +121,7 @@ INSERT INTO Reviews (
     bookID,
     reviewName,
     rating,
-    Description
+    description
 )
 VALUES
 (

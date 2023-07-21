@@ -23,3 +23,15 @@ p a {
 p {
     margin-left: -10px;
 }
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+}
+
+.category {
+    background-color: #87c488;
+}
