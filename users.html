@@ -24,42 +24,106 @@
         </p>
         <h1>Users</h1>
         <h2>Browse Users</h2>
-        <div id="brows">
+        <div id="browse">
             <table>
                 <tr class="category">
-                    <th>usreID</th>
+                    <th>userID</th>
+                    <th>fName</th>
+                    <th>lName</th>
                     <th>email</th>
-                    <th>paymentMethod</th>
-                    <th>address</th>
                 </tr>
                 <tr>
                     <td>1</td>
+                    <td>Sam</td>
+                    <td>Doe</td>
                     <td>sam1@gmail.com</td>
-                    <td>visa 0978</td>
-                    <td>1234 address in Atlana, GA 22923</td>
                 </tr>
                 <tr>
                     <td>2</td>
+                    <td>Joy</td>
+                    <td>Soh</td>
                     <td>joy1@yahoo.com</td>
-                    <td>mastercard 9765</td>
-                    <td>5678 address in Sherwood, OR, 99897</td>
                 </tr>
                 <tr>
                     <td>3</td>
+                    <td>Bill</td>
+                    <td>Goldberg</td>
                     <td>bill1@hotmail.com</td>
-                    <td>bitcoin</td>
-                    <td>21002 address st. deltaview, NY, 887755</td>
                 </tr>
             </table>
         </div>
-        <!-- <div id="insert">
-            <form id="add-user"></form>
+
+        <br>
+        
+        <div id="insert">
+            <h2>Add User</h2>
+            <form id="add-user">
+                <label for="fName">First Name:</label>
+                <br>
+                <input type="text" id="fName" name="fName">
+                <br><br>
+
+                <label for="lName">Last Name:</label>
+                <br>
+                <input type="text" id="lName" name="lName">
+                <br><br>
+
+                <label for="email">Email:</label>
+                <br>
+                <input type="email" id="email" name="email">
+                <br><br><br>
+                
+                <input type="submit" value="Submit">
+                <br>
+            </form>
         </div>
+        
+        <br>
+
         <div id="update">
-            <form id="edit-user-info"></form>
+            <h2>Update User</h2>
+            <form id="edit-user-info">
+                <label for="userID">userID:</label>
+                <br>
+                <input type="number" id="userID" name="userID">
+                <br><br>
+
+                <label for="fName">First Name:</label>
+                <br>
+                <input type="text" id="fName" name="fName">
+                <br><br>
+
+                <label for="lName">Last Name:</label>
+                <br>
+                <input type="text" id="lName" name="lName">
+                <br><br>
+
+                <label for="email">Email:</label>
+                <br>
+                <input type="email" id="email" name="email">
+                <br><br><br>
+                
+                <input type="submit" value="Submit">
+                <br>
+            </form>
         </div>
+        
+        <br>
+        
         <div id="delete">
-            <form id="delete-user"></form>
-        </div> -->
+            <h2>Delete User</h2>
+            <form id="delete-user">
+                <label for="userID">userID:</label>
+                <br>
+                <input type="number" id="userID" name="userID">
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
+        </div>
+
+        <br><br>
+
     </body>
 </html>

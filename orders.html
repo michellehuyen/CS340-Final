@@ -27,56 +27,176 @@
         <div id="browse">
             <table>
                 <tr class="category">
+                    <th>orderID</th>
                     <th>userID</th>
                     <th>bookID</th>
-                    <th>paymentMethod</th>
-                    <th>address</th>
-                    <th>quantity</th>
+                    <th>addressLine1</th>
+                    <th>addressLine2</th>
+                    <th>city</th>
+                    <th>state</th>
+                    <th>postalCode</th>
                     <th>orderDate</th>
                     <th>orderStatus</th>
+                    <th>quantity</th>
                     <th>totalDue</th>
+                    <th>paymentMethod</th>
                 </tr>
                 <tr>
+                    <td>1</td>
                     <td>1</td>
                     <td>1,2</td>
-                    <td>visa 0978</td>
-                    <td>1234 address in Atlana, GA 22923</td>
-                    <td>2</td>
+                    <td>1234 Main St.</td>
+                    <td>NULL</td>
+                    <td>Atlanta</td>
+                    <td>Georgia</td>
+                    <td>22923</td>
                     <td>2012-09-12</td>
                     <td>Pending</td>
+                    <td>2</td>
                     <td>$34.55</td>
+                    <td>visa 0978</td>
                 </tr>
                 <tr>
                     <td>2</td>
+                    <td>2</td>
                     <td>5</td>
-                    <td>mastercard 8765</td>
-                    <td>5678 address in Sherwood, OR, 99897</td>
-                    <td>1</td>
+                    <td>5678 Canyon Road</td>
+                    <td>NULL</td>
+                    <td>Sherwood</td>
+                    <td>Oregon</td>
+                    <td>99897</td>
                     <td>1969-04-20</td>
                     <td>Completed</td>
+                    <td>1</td>
                     <td>$13.32</td>
+                    <td>mastercard 8765</td>
                 </tr>
                 <tr>
                     <td>3</td>
+                    <td>3</td>
                     <td>21</td>
-                    <td>bitcoin</td>
-                    <td>21002 address st. deltaview, NY, 887755</td>
-                    <td>1</td>
+                    <td>210 Bowman St.</td>
+                    <td>Apt. #G300</td>
+                    <td>Hamburg</td>
+                    <td>New York</td>
+                    <td>14075</td>
                     <td>1997-06-03</td>
                     <td>Completed</td>
+                    <td>1</td>
                     <td>$12.21</td>
+                    <td>bitcoin</td>
                 </tr>
             </table>
         </div>
-        <!-- <div id="insert">
-            <form id="add-order"></form>
+        
+        <br>
+
+        <div id="insert">
+            <h2>Add Order</h2>
+            <form id="add-order">
+                <label for="userID">userID:</label>
+                <br>
+                <input type="number" id="userID" name="userID">
+                <br><br>
+
+                <label for="bookID">bookID:</label>
+                <br>
+                <input type="number" id="bookID" name="bookID">
+                <br><br>
+
+                <label for="addressLine1">Address Line 1:</label>
+                <br>
+                <input type="text" id="addressLine1" name="addressLine1">
+                <br><br>
+
+                <label for="addressLine2">Address Line 2:</label>
+                <br>
+                <input type="text" id="addressLine2" name="addressLine2">
+                <br><br>
+
+                <label for="city">City:</label>
+                <br>
+                <input type="text" id="city" name="city">
+                <br><br>
+
+                <label for="state">State:</label>
+                <br>
+                <input type="text" id="state" name="state">
+                <br><br>
+                
+                <label for="postalCode">Postal Code:</label>
+                <br>
+                <input type="text" id="postalCode" name="postalCode">
+                <br><br>
+
+                <label for="orderDate">Order Date:</label>
+                <br>
+                <input type="date" id="orderDate" name="orderDate">
+                <br><br>
+
+                <label for="orderStatus">Order Status:</label>
+                <br>
+                <input disabled="disabled" id="orderStatus" value="Pending">
+                <br><br>
+
+                <label for="quantity">Quantity:</label>
+                <br>
+                <input type="number" id="quantity" name="quantity">
+                <br><br>
+
+                <label for="totalDue">Total Due:</label>
+                <br>
+                <input type="number" step="any" id="totalDue" name="totalDue">
+                <br><br>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <br>
+                <input type="text" id="paymentMethod" name="paymentMethod">
+                <br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
         </div>
+
+        <br>
+
         <div id="update">
-            <form id="update-order-status"></form>
-        </div> -->
-        <!-- maybe we won't need this if we do cancel order in update? -->
-        <!-- <div id="delete">
-            <form id="cancel-order"></form>
-        </div> -->
+            <h2>Update Order</h2>
+            <form id="update-order-status">
+                <label for="orderID">orderID:</label>
+                <br>
+                <input type="number" id="orderID" name="orderID">
+                <br><br>
+
+                <label for="orderSatus">Order Satus:</label>
+                <br>
+                <select id="orderSatus" name="orderSatus">
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>                    <option value="Completed">Completed</option>
+                </select>
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
+        </div>
+
+        <br>
+
+        <div id="delete">
+            <h2>Delete Order</h2>
+            <form id="cancel-order">
+                <label for="orderID">orderID:</label>
+                <br>
+                <input type="number" id="orderID" name="orderID">
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
+        </div>
+        <br><br>
     </body>
 </html>

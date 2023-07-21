@@ -36,19 +36,24 @@ VALUES
 -- Create Users table
 CREATE OR REPLACE TABLE Users (
     userID int not NULL AUTO_INCREMENT,
-    name varchar(50) not NULL,
+    fName varchar(50) not NULL,
+    lName varchar(50) not NULL,
     email varchar(89) not NULL,
     PRIMARY KEY (userID)
 );
 
 -- Insert values into the Users table
 INSERT INTO Users (
-    name,
+    userID,
+    fName,
+    lName,
     email
 )
 VALUES
 (
-    "John Doe",
+    1
+    "John",
+    "Doe",
     "johndoe@gmail.com"
 );
 
@@ -77,15 +82,16 @@ CREATE OR REPLACE TABLE Orders (
 INSERT INTO Orders (
     userID,
     bookID,
-    customerName,
     addressLine1,
+    addressLine2,
     city,
     state,
     postalCode,
     orderDate,
     orderStatus,
     quantity,
-    totalDue
+    totalDue,
+    paymentMethod
 )
 VALUES
 (
@@ -93,13 +99,15 @@ VALUES
     1,
     "John Doe",
     "60025 Bollinger Canyon Road",
+    NULL,
     "San Ramon",
     "California",
     "94583",
     "2023-07-13",
     "Pending",
     "2",
-    "32.94"
+    "32.94",
+    "bitcoin"
 );
 
 -- Create Reviews table
@@ -107,7 +115,6 @@ CREATE OR REPLACE TABLE Reviews (
     reviewID int not NULL AUTO_INCREMENT,
     userID int not NULL,
     bookID int not NULL,
-    reviewName varchar(50) not NULL,
     rating int not NULL,
     Description text not NULL,
     PRIMARY KEY (reviewID),
@@ -119,7 +126,6 @@ CREATE OR REPLACE TABLE Reviews (
 INSERT INTO Reviews (
     userID,
     bookID,
-    reviewName,
     rating,
     description
 )
@@ -127,7 +133,6 @@ VALUES
 (
     1,
     1,
-    "XYZ123",
     "5",
     "Great book!"
 );

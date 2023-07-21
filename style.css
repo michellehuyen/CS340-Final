@@ -1,10 +1,10 @@
 h1 {
-    font-size: 40px;
+    font-size: 45px;
     /* padding-left: 10px; */
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 body {
@@ -34,4 +34,19 @@ th, td {
 
 .category {
     background-color: #87c488;
+}
+
+form {
+    border: 1px solid black;
+    padding: 10px;
+    width: 800px;
+}
+
+label {
+    font-size: 18px;
+}
+
+input, select {
+    height: 1.6em;
+    width: 300px;
 }

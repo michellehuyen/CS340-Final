@@ -68,11 +68,78 @@
                 </tr>
             </table>
         </div>
-        <!-- <div id="insert">
-            <form id="add-book"></form>
+        <br>
+        <div id="insert">
+            <h2>Add Book</h2>
+            <form id="add-book">
+                <!-- text input for title -->
+                <label for="title">Title:</label>
+                <br>
+                <input type="text" id="title" name="title">
+                <br><br>
+
+                <!-- text input for author -->
+                <label for="author">Author:</label>
+                <br>
+                <input type="text" id="author" name="author">
+                <br><br>
+                
+                <!-- text input for genre -->
+                <label for="genre">Genre:</label>
+                <br>
+                <input type="text" id="genre" name="genre">
+                <br><br>
+
+                <!-- text input for price -->
+                <label for="price">Price:</label>
+                <br>
+                <input type="number" step="any" id="price" name="price">
+                <br><br>
+
+                <!-- dropdown of book status -->
+                <label for="status">Status:</label>
+                <br>
+                <select id="status" name="status">
+                    <option value="In Stock">In Stock</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
         </div>
+        <br>
         <div id="update">
-            <form id="update-book-status"></form>
-        </div> -->
+            <h2>Update Book</h2>
+            <form id="update-book-status">
+                <!-- text input for bookID -->
+                <label for="bookID">bookID:</label>
+                <br>
+                <input type="text" id="bookID" name="bookID">
+                <br><br>
+
+                <!-- text input for price -->
+                <label for="price">Price:</label>
+                <br>
+                <input type="number" step="any" id="price" name="price">
+                <br><br>
+
+                <!-- dropdown of book status -->
+                <label for="status">Status:</label>
+                <br>
+                <select id="status" name="status">
+                    <option value="In Stock">In Stock</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+                <br><br><br>
+
+                <input type="submit">
+                <br>                
+            </form>
+        </div>
+
+        <br><br>
+
     </body>
 </html>
