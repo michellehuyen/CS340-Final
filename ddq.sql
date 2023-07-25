@@ -1,0 +1,174 @@
+-- Michelle Nguyen & Prestion Sellers
+-- Group 44
+-- Cloud Books
+
+-- Disable foreign key checks
+SET FOREIGN_KEY_CHECKS = 0;
+SET AUTOCOMMIT = 0;
+
+-- TABLE CREATIONS --
+
+-- Create Books table
+CREATE OR REPLACE TABLE Books (
+    bookID int NOT NULL AUTO_INCREMENT,
+    title varchar(255),
+    author varchar(255),
+    genre varchar(255),
+    price decimal(10,2),
+    PRIMARY KEY (bookID)
+);
+
+-- Create intersection table for M:M relationship between Books and Orders
+create or replace table Orders_has_Books(
+    ordersHasBooksID int(11) not null AUTO_INCREMENT,
+    orderID int(11) not null, 
+    bookID int(11) not null,
+    constraint orderID foreign key(orderID) references Orders(orderID),
+    constraint bookID foreign key(bookID) references Books(bookID),
+    primary key(ordersHasBooksID) 
+);
+
+-- Create Orders table
+CREATE OR REPLACE TABLE Orders (
+    orderID int not NULL AUTO_INCREMENT,
+    userID int not NULL,
+    customerName varchar(255) not NULL,
+    addressLine1 varchar(255) not NULL,
+    addressLine2 varchar(255),
+    city varchar(255) not NULL,
+    state varchar(255) not NULL,
+    postalCode varchar(255) not NULL,
+    orderDate date not NULL,
+    orderStatus varchar(255) not NULL,
+    quantity int not NULL,
+    totalDue decimal(19,2) not NULL,
+    paymentMethod varchar(255) not NULL,
+    PRIMARY KEY (orderID),
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
+);
+
+-- Create Users table
+CREATE OR REPLACE TABLE Users (
+    userID int not NULL AUTO_INCREMENT,
+    fName varchar(255) not NULL,
+    lName varchar(255) not NULL,
+    email varchar(255) not NULL,
+    PRIMARY KEY (userID)
+);
+
+-- Create Reviews table
+CREATE OR REPLACE TABLE Reviews (
+    reviewID int not NULL AUTO_INCREMENT,
+    userID int not NULL,
+    bookID int not NULL,
+    rating int not NULL,
+    description mediumtext not NULL,
+    PRIMARY KEY (reviewID),
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE,
+    FOREIGN KEY (bookID) REFERENCES Books(bookID) ON DELETE CASCADE
+);
+
+
+-- DATA INSERTIONS -- 
+
+-- Insert values into the Books table
+INSERT INTO Books (
+    title,
+    author,
+    genre,
+    price
+)
+VALUES 
+(
+    "The Bitcoin Standard",
+    "Saifedean Ammous",
+    "Economics",
+    14.54
+),
+(
+    "The Price of Tomorrow",
+    "Jeff Booth",
+    "Technology",
+    29.49
+),
+(
+    "Permanent Record",
+    "Edward Snowden",
+    "Security",
+    10.81
+);
+
+-- need to add inserts for intersection table but i need to figure out what will go in the 
+-- intersection table and what will go in the orders table
+
+
+-- Insert values into the Orders table
+INSERT INTO Orders (
+    customerName,
+    addressLine1,
+    addressLine2,
+    city,
+    state,
+    postalCode,
+    orderDate,
+    orderStatus,
+    quantity,
+    totalDue,
+    paymentMethod
+)
+VALUES
+(
+    "John Doe",
+    "60025 Bollinger Canyon Road",
+    NULL,
+    "San Ramon",
+    "California",
+    "94583",
+    "2023-07-13",
+    "Pending",
+    "2",
+    "32.94",
+    "bitcoin"
+);
+
+-- Insert values into the Users table
+INSERT INTO Users (
+    fName,
+    lName,
+    email
+)
+VALUES
+(
+    "Sam",
+    "Doe",
+    "sam1@gmail.com"
+),
+(
+    "Joy",
+    "Soh",
+    "jpy1@yahoo.com"
+),
+(
+    "Bill",
+    "Goldberg",
+    "bill1@hotmail.com"
+);
+
+-- Insert values into the Reviews table
+INSERT INTO Reviews (
+    userID,
+    bookID,
+    rating,
+    description
+)
+VALUES
+(
+    1,
+    1,
+    "5",
+    "Great book!"
+);
+
+-- Re-enable foreign key checks
+SET FOREIGN_KEY_CHECKS = 1;
+COMMIT;
