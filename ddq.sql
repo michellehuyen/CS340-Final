@@ -101,6 +101,13 @@ VALUES
 -- need to add inserts for intersection table but i need to figure out what will go in the 
 -- intersection table and what will go in the orders table
 
+insert into Orders_has_Books(
+
+)
+values(
+    
+);
+
 
 -- Insert values into the Orders table
 INSERT INTO Orders (
