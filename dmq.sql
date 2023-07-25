@@ -89,10 +89,12 @@ values(
 );
 
 -- 1 update query --
-
+update Orders
+set orderStatus = "Fufilled"
+where orderID = 1;
 
 -- 1 delete query --
-
+delete from Books where bookID = 1;
 
 -- 1 dynamic drop down menu --
 
