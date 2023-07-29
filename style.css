@@ -32,8 +32,20 @@ th, td {
     padding: 5px;
 }
 
-.category {
-    background-color: #87c488;
+#books-header {
+    background-color: #f6dfa6;
+}
+
+#users-header {
+    background-color: #9bcd9c;
+}
+
+#orders-header {
+    background-color: #96c0da;
+}
+
+#reviews-header {
+    background-color: #dbbbe1;
 }
 
 form {
