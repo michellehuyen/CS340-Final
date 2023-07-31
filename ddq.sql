@@ -59,7 +59,7 @@ CREATE OR REPLACE TABLE Users (
 -- Create Reviews table
 CREATE OR REPLACE TABLE Reviews (
     reviewID int not NULL AUTO_INCREMENT,
-    userID int not NULL,
+    userID int,
     bookID int not NULL,
     rating int not NULL,
     description mediumtext not NULL,

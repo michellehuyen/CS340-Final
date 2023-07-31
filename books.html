@@ -103,20 +103,25 @@
             </form>
         </div>
         <br>
-        <div id="update">
-            <h2>Update Book</h2>
-            <form id="update-book-status">
-                <!-- text input for bookID -->
-                <label for="bookID">bookID:</label>
+        <div id="search">
+            <h2>Search for a Book</h2>
+            <form id="search-for-book">
+                <!-- drop down list to search for a book -->
+                <label for="title">title:</label>
                 <br>
-                <input type="text" id="bookID" name="bookID">
-                <br><br>
-
+                <!-- <input type="text" id="title" name="title">
+                <br><br> -->
+                <select name="books" id="books">
+                    <option value="The Handmaid's Tale">The Handmaid's Tale</option>
+                    <option value="The Bitcoin Standard">The Bitcoin Standard</option>
+                    <option value="The Price of Tomorrow">The Price of Tomorrow</option>
+                    <option value="Permanent Record">Permanent Record</option>
+                </select>
                 <!-- text input for price -->
-                <label for="price">Price:</label>
+                <!-- <label for="price">Price:</label>
                 <br>
                 <input type="number" step="any" id="price" name="price">
-                <!-- <br><br> -->
+                <-- <br><br> -->
 
                 <!-- dropdown of book status -->
                 <!-- <label for="status">Status:</label>

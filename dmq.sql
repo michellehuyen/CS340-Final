@@ -40,6 +40,7 @@ values(
 );
 
 insert into Orders(
+    userID,
     customerName,
     addressLine1,
     addressLine2,
@@ -53,6 +54,7 @@ insert into Orders(
     paymentMethod
 )
 values(
+    :userIDInput,
     :customerNameInput,
     :addressLine1Input,
     :addressLine2Input,
@@ -90,17 +92,26 @@ values(
     :descriptionInput
 );
 
--- 1 update query --
-update Orders
-set orderStatus = "Fufilled"
-where orderID = 1;
+-- 1 update query that sets FK value to NULL --
+-- Reviews can have a NULL value for the userID --
+update Reviews
+set userID = NULL
+where userID = :userIDInput;
+
+-- 1 other update --
+update Users
+set fname = :fNameInput, lname = :lNameInput, email = :emailInput
+where userID = :userIDInput;
 
 -- 1 delete query --
-delete from Books where bookID = 1;
+-- deleting an order should not delete any customers --
+delete from Orders where orderID = :orderIDInput;
 
--- 1 dynamic drop down menu --
+-- 1 dynamic drop down menu OR  1 search feature. lets let the user search for a book --
+select title from Books; -- get all book titles by drop down list then have user select --
 
-
+-- get all books by search feature where user input of the book title matches the rows title -- 
+select title from Books where :titleInput = title; 
 
 
 
