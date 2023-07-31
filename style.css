@@ -48,6 +48,10 @@ th, td {
     background-color: #dbbbe1;
 }
 
+#orders-has-books-header { /*need color plz*/
+    background-color: ;
+}
+
 form {
     border: 1px solid black;
     padding: 10px;

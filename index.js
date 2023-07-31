@@ -36,6 +36,10 @@ app.get('/reviews.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/reviews.html'));
 })
 
+app.get('/orders_has_books.html', function(req, res) {
+    res.sendFile(path.join(__dirname + '/orders_has_books.html'));
+})
+
 /*
     LISTENER
 */

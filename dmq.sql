@@ -31,10 +31,12 @@ values(
 );
 
 insert into Orders_has_Books(
-
+    orderID,
+    bookID
 )
 values(
-
+    :orderIDInput,
+    :bookIDInput
 );
 
 insert into Orders(
