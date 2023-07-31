@@ -23,8 +23,8 @@ create or replace table Orders_has_Books(
     ordersHasBooksID int(11) not null AUTO_INCREMENT,
     orderID int(11) not null, 
     bookID int(11) not null,
-    constraint orderID foreign key(orderID) references Orders(orderID),
-    constraint bookID foreign key(bookID) references Books(bookID),
+    constraint orderID foreign key(orderID) references Orders(orderID) on delete cascade,
+    constraint bookID foreign key(bookID) references Books(bookID) on delete cascade,
     primary key(ordersHasBooksID) 
 );
 
@@ -120,6 +120,7 @@ values
 
 -- Insert values into the Orders table
 INSERT INTO Orders (
+    userID,
     customerName,
     addressLine1,
     addressLine2,
@@ -134,16 +135,45 @@ INSERT INTO Orders (
 )
 VALUES
 (
-    "John Doe",
-    "60025 Bollinger Canyon Road",
+    1,
+    "Sam Doe",
+    "1234 Main st.",
     NULL,
-    "San Ramon",
-    "California",
-    "94583",
-    "2023-07-13",
+    "Atlanta",
+    "Georgia",
+    22923,
+    "2012-09-12",
     "Pending",
-    "2",
-    "32.94",
+    2,
+    34.55,
+    "visa 0978"
+),
+(
+    2,
+    "Joy Soh",
+    "5678 Canyon Road",
+    NULL,
+    "Sherwood",
+    "Oregon",
+    99897,
+    "1969-04-20",
+    "Completed",
+    1,
+    13.32,
+    "mastercard 8765"
+),
+(
+    3,
+    "Bill Goldberg",
+    "210 Bowman St.",
+    "APT. #G300",
+    "Hamburg",
+    'New York',
+    14075,
+    "1997-06-03",
+    "Completed",
+    1,
+    12.21,
     "bitcoin"
 );
 
