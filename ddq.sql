@@ -101,11 +101,20 @@ VALUES
 -- need to add inserts for intersection table but i need to figure out what will go in the 
 -- intersection table and what will go in the orders table
 
-insert into Orders_has_Books(
-
+insert into Orders_has_Books
+(
+    orderID,
+    bookID
 )
-values(
-    
+values
+(
+    1,1
+),
+(
+    2,2
+),
+(
+    3,3
 );
 
 
@@ -171,9 +180,21 @@ INSERT INTO Reviews (
 VALUES
 (
     1,
-    1,
-    "5",
-    "Great book!"
+    34,
+    4,
+    "I enjoyed learning about Bitcoin"
+),
+(
+    2,
+    43,
+    3,
+    "This book wasn't that great."
+),
+(
+    3,
+    23,
+    5,
+    "Best book I've read by far!"
 );
 
 -- Re-enable foreign key checks
