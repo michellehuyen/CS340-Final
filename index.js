@@ -10,17 +10,33 @@ const path = require('path');
 // Database
 var db = require('./db-connector')
 
+//handlebars setup
+
+const { engine } = require('express-handlebars');
+var exphbs = require('express-handlebars');     // Import express-handlebars
+app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
+app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
+
+/*
+    ROUTES
+*/
 https://www.digitalocean.com/community/tutorials/use-expressjs-to-deliver-html-files
 app.get('/style.css', function(req, res) {
     res.sendFile(path.join(__dirname + '/style.css'));
+    
 })
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-})
+    //res.sendFile(path.join(__dirname + '/index.html'));
+    res.render('index'); 
+});
 
 app.get('/books.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/books.html'));
+    //res.sendFile(path.join(__dirname + '/books.html'));
+    let insertBooks = "select * from Books;";
+    db.pool.query(insertBooks, function(error, rows, fields){
+        res.render('books', {data: rows})
+    })
 })
 
 app.get('/users.html', function(req, res) {
