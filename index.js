@@ -54,6 +54,10 @@ app.get('/reviews.html', function(req, res) {
 
 app.get('/orders_has_books.html', function(req, res) {
     res.sendFile(path.join(__dirname + '/orders_has_books.html'));
+    let insertOhB = "select * from Orders_has_Books;";
+    db.pool.query(insertOhB, function(error, rows, fields){
+        res.render('orders_has_books', {data: rows})
+    })
 })
 
 /*
