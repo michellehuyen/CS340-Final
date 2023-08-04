@@ -1,3 +1,22 @@
+<!-- navigation bar -->
+<nav>
+    <a href="/">Home</a>
+    |
+    <a href="books.html">Books</a>
+    |
+    <a href="users.html">Users</a>
+    |
+    <a href="orders.html">Orders</a>
+    |
+    <a href="reviews.html">Reviews</a>
+    |    
+    <a href="orders_has_books.html">Orders has Books</a>
+</nav>
+
+<header>
+    <h1>Books</h1>
+</header>
+
 {{!-- Create a table --}}
 <table>
 
@@ -30,3 +49,54 @@
         {{/each}}
     </tbody>
 </table>
+
+<br>
+
+<h2>Add Book</h2>
+<form id="add-book">
+    <!-- text input for title -->
+    <label for="title">Title:</label>
+    <br>
+    <input type="text" id="title" name="title">
+    <br><br>
+
+    <!-- text input for author -->
+    <label for="author">Author:</label>
+    <br>
+    <input type="text" id="author" name="author">
+    <br><br>
+    
+    <!-- text input for genre -->
+    <label for="genre">Genre:</label>
+    <br>
+    <input type="text" id="genre" name="genre">
+
+    <br><br><br>
+
+    <input type="submit" value="Submit">
+    <br>
+</form>
+
+<br>                
+
+<h2>Search for a Book</h2>
+<form id="search-for-book">
+    <!-- drop down list to search for a book -->
+    <label for="title">Title:</label>
+    <br>
+    <!-- <input type="text" id="title" name="title">
+    <br><br> -->
+    <select name="books" id="books">
+        <option value="The Handmaid's Tale">The Handmaid's Tale</option>
+        <option value="The Bitcoin Standard">The Bitcoin Standard</option>
+        <option value="The Price of Tomorrow">The Price of Tomorrow</option>
+        <option value="Permanent Record">Permanent Record</option>
+    </select>
+
+    <br><br><br>
+
+    <input type="submit">
+    <br>                
+</form>
+
+<br><br>

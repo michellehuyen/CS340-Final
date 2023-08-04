@@ -16,11 +16,11 @@ a {
     font-size: 20px;
 }
 
-p a {
+nav a {
     padding: 0px 10px;
 }
 
-p {
+nav {
     margin-left: -10px;
 }
 
