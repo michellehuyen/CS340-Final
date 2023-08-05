@@ -4,11 +4,11 @@
     |
     <a href="books.hbs">Books</a>
     |
-    <a href="users.html">Users</a>
+    <a href="users.hbs">Users</a>
     |
-    <a href="orders.html">Orders</a>
+    <a href="orders.hbs">Orders</a>
     |
-    <a href="reviews.html">Reviews</a>
+    <a href="reviews.hbs">Reviews</a>
     |    
     <a href="orders_has_books.hbs">Orders has Books</a>
 </nav>
@@ -25,7 +25,7 @@
 
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
-        <tr>
+        <tr id="orders-has-books-header">
             {{!-- <th>Orders Has Books ID</th>
             <th>Order ID</th>
             <th>Book ID</th> --}}

@@ -31,10 +31,13 @@ app.get('/', function(req, res) {
     res.render('index'); 
 });
 
+/*
+    BOOKS
+*/
 app.get('/books.hbs', function(req, res) {
     //res.sendFile(path.join(__dirname + '/books.html'));
-    let insertBooks = "select * from Books;";
-    db.pool.query(insertBooks, function(error, rows, fields){
+    let getBooks = "select * from Books;";
+    db.pool.query(getBooks, function(error, rows, fields){
         res.render('books', {data: rows})
     })
 })
@@ -75,63 +78,136 @@ app.post('/add_books', function(req, res){
     })
 })
 
-app.get('/users.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/users.html'));
+/*
+    USERS
+*/
+app.get('/users.hbs', function(req, res) {
+    let getUsers = "select * from Users;";
+    db.pool.query(getUsers, function(error, rows, fields){
+        res.render('users', {data: rows})
+    })
 })
 
-app.get('/orders.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/orders.html'));
+app.post('/add_users', function(req, res){
+    let data = req.body;
+
+    query1 = `insert into Users (fName, lName, email) values ('${data.fName}', '${data.lName}', '${data.email}')`;
+    db.pool.query(query1, function(error, rows, fields) {
+        if (error) {
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else {
+            query2 = `SELECT * FROM Users;`;
+            db.pool.query(query2, function(error, rows, fields) {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                else {
+                    res.send(rows);
+                }
+            })
+        }
+    })
 })
 
-
-app.get('/reviews.html', function(req, res) {
-    res.sendFile(path.join(__dirname + '/reviews.html'));
+/*
+    ORDERS
+*/
+app.get('/orders.hbs', function(req, res) {
+    let getOrders = "select * from Orders;";
+    db.pool.query(getOrders, function(error, rows, fields){
+        res.render('orders', {data: rows})
+    })
 })
 
-// app.get('/orders_has_books.html', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/orders_has_books.html'));
-//     let insertOhB = "select * from Orders_has_Books;";
-//     db.pool.query(insertOhB, function(error, rows, fields){
-//         res.render('orders_has_books', {data: rows})
-//     })
-// })
+app.post('/add_orders', function(req, res){
+    let data = req.body;
 
+    query1 = `insert into Orders (userID, customerName, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
+    values ('${data.userID}', '${data.customerName}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', '${data.postalCode}', '${data.orderDate}', '${data.orderStatus}',, '${data.quantity}', '${data.totalDue}', '${data.paymentMethod}')`;
+    db.pool.query(query1, function(error, rows, fields) {
+        if (error) {
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else {
+            query2 = `SELECT * FROM Orders;`;
+            db.pool.query(query2, function(error, rows, fields) {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                else {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+})
+
+/*
+    REVIEWS
+*/
+app.get('/reviews.hbs', function(req, res) {
+    let getReviews = "select * from Reviews;";
+    db.pool.query(getReviews, function(error, rows, fields){
+        res.render('reviews', {data: rows})
+    })
+})
+
+app.post('/add_reviews', function(req, res){
+    let data = req.body;
+
+    query1 = `insert into Reviews (userID, bookID, rating, description) values ('${data.userID}', '${data.bookID}', '${data.rating}', '${data.description}')`;
+    db.pool.query(query1, function(error, rows, fields) {
+        if (error) {
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else {
+            query2 = `SELECT * FROM Reviews;`;
+            db.pool.query(query2, function(error, rows, fields) {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                else {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+})
+
+/*
+    ORDERS_HAS_BOOKS
+*/
 app.get('/orders_has_books.hbs', function(req, res) {
-    let query1 = "SELECT * FROM Orders_has_Books;";
-    db.pool.query(query1, function(error, rows, fields){
+    let getOhB = "SELECT * FROM Orders_has_Books;";
+    db.pool.query(getOhB, function(error, rows, fields){
         res.render('orders_has_books', {data: rows});
     })
 })
 
 app.post('/add_orders_has_books', function(req, res){
-    // Capture the incoming data and parse it back to a JS object
     let data = req.body;
 
-    // Create the query and run it on the database
     query1 = `insert into Orders_has_Books (orderID, bookID) values ('${data.orderID}', '${data.bookID}')`;
     db.pool.query(query1, function(error, rows, fields) {
-        // Check to see if there was an error
         if (error) {
-            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
             console.log(error)
             res.sendStatus(400);
         }
-        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM Orders_has_Books and
-        // presents it on the screen
         else {
-            // If there was no error, perform a SELECT * on Orders_has_Books
             query2 = `SELECT * FROM Orders_has_Books;`;
             db.pool.query(query2, function(error, rows, fields) {
-                // If there was an error on the second query, send a 400
                 if (error) {
-                    // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
                     console.log(error);
                     res.sendStatus(400);
                 }
-                // If all went well, send the results of the query back.
                 else {
-                    // Redirect back to the orders_has_books page after successful insert
-                    // res.redirect('/orders_has_books.hbs');
                     res.send(rows);
                 }
             })
