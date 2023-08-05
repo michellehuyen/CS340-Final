@@ -4,6 +4,8 @@
 // Express
 var express = require('express');   // We are using the express library for the web server
 var app     = express();            // We need to instantiate an express object to interact with the server in our code
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 PORT        = 8009;                 // Set a port number at the top so it's easy to change in the future
 const path = require('path');
 
@@ -17,6 +19,9 @@ var exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the handlebars engine to process templates
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
+// Static Files
+// app.use(express.static('public'));
+
 /*
     ROUTES
 */
@@ -27,7 +32,6 @@ app.get('/style.css', function(req, res) {
 })
 
 app.get('/', function(req, res) {
-    //res.sendFile(path.join(__dirname + '/index.html'));
     res.render('index'); 
 });
 
@@ -36,7 +40,7 @@ app.get('/', function(req, res) {
 */
 app.get('/books.hbs', function(req, res) {
     //res.sendFile(path.join(__dirname + '/books.html'));
-    let getBooks = "select * from Books;";
+    let getBooks = "SELECT * FROM Books;";
     db.pool.query(getBooks, function(error, rows, fields){
         res.render('books', {data: rows})
     })
@@ -47,7 +51,7 @@ app.post('/add_books', function(req, res){
     let data = req.body;
 
     // Create the query and run it on the database
-    query1 = `insert into Books (title, author, genre, price) values ('${data.title}', '${data.author}', '${data.genre}', '${data.price}')`;
+    query1 = `INSERT INTO Books (title, author, genre, price) VALUES ('${data.title}', '${data.author}', '${data.genre}', '${data.price}')`;
     db.pool.query(query1, function(error, rows, fields) {
         // Check to see if there was an error
         if (error) {
@@ -82,7 +86,7 @@ app.post('/add_books', function(req, res){
     USERS
 */
 app.get('/users.hbs', function(req, res) {
-    let getUsers = "select * from Users;";
+    let getUsers = "SELECT * FROM Users;";
     db.pool.query(getUsers, function(error, rows, fields){
         res.render('users', {data: rows})
     })
@@ -91,7 +95,7 @@ app.get('/users.hbs', function(req, res) {
 app.post('/add_users', function(req, res){
     let data = req.body;
 
-    query1 = `insert into Users (fName, lName, email) values ('${data.fName}', '${data.lName}', '${data.email}')`;
+    query1 = `INSERT INTO Users (fName, lName, email) VALUES ('${data.fName}', '${data.lName}', '${data.email}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)
@@ -124,9 +128,10 @@ app.get('/orders.hbs', function(req, res) {
 
 app.post('/add_orders', function(req, res){
     let data = req.body;
+    let userID = parseInt(data.userID);
 
-    query1 = `insert into Orders (userID, customerName, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
-    values ('${data.userID}', '${data.customerName}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', '${data.postalCode}', '${data.orderDate}', '${data.orderStatus}',, '${data.quantity}', '${data.totalDue}', '${data.paymentMethod}')`;
+    query1 = `INSERT INTO Orders (userID, customerName, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
+    VALUES ('${userID}', '${data.customerName}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', '${data.postalCode}', '${data.orderDate}', '${data.orderStatus}',, '${data.quantity}', '${data.totalDue}', '${data.paymentMethod}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)
@@ -151,7 +156,7 @@ app.post('/add_orders', function(req, res){
     REVIEWS
 */
 app.get('/reviews.hbs', function(req, res) {
-    let getReviews = "select * from Reviews;";
+    let getReviews = "SELECT * FROM Reviews;";
     db.pool.query(getReviews, function(error, rows, fields){
         res.render('reviews', {data: rows})
     })
@@ -160,7 +165,7 @@ app.get('/reviews.hbs', function(req, res) {
 app.post('/add_reviews', function(req, res){
     let data = req.body;
 
-    query1 = `insert into Reviews (userID, bookID, rating, description) values ('${data.userID}', '${data.bookID}', '${data.rating}', '${data.description}')`;
+    query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES ('${data.userID}', '${data.bookID}', '${data.rating}', '${data.description}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)
@@ -193,8 +198,10 @@ app.get('/orders_has_books.hbs', function(req, res) {
 
 app.post('/add_orders_has_books', function(req, res){
     let data = req.body;
+    let orderID = parseInt(data.orderID)
+    let bookID = parseInt(data.bookID)
 
-    query1 = `insert into Orders_has_Books (orderID, bookID) values ('${data.orderID}', '${data.bookID}')`;
+    query1 = `INSERT INTO Orders_has_Books (orderID, bookID) VALUES (${orderID}, ${bookID})`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)
