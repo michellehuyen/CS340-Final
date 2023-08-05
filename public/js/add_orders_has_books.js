@@ -1,5 +1,5 @@
 // Get the objects we need to modify
-let addOrdersHasBooksForm = document.getElementById('add-orders-has-books');
+let addOrdersHasBooksForm = document.getElementById('add_orders_has_books_form');
 
 // Modify the objects we need
 addOrdersHasBooksForm.addEventListener("submit", function (e) {
@@ -68,7 +68,7 @@ addRowToTable = (data) => {
     let bookIDCell = document.createElement("TD");
 
     // Fill the cells with correct data
-    idCell.innerText = newRow.id;
+    idCell.innerText = newRow.ordersHasBooksID;
     orderIDCell.innerText = newRow.orderID;
     bookIDCell.innerText = newRow.bookID;
 

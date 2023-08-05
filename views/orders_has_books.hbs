@@ -2,7 +2,7 @@
 <nav>
     <a href="/">Home</a>
     |
-    <a href="books.html">Books</a>
+    <a href="books.hbs">Books</a>
     |
     <a href="users.html">Users</a>
     |
@@ -10,7 +10,7 @@
     |
     <a href="reviews.html">Reviews</a>
     |    
-    <a href="orders_has_books.html">Orders has Books</a>
+    <a href="orders_has_books.hbs">Orders has Books</a>
 </nav>
 
 <header>
@@ -26,18 +26,23 @@
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
         <tr>
-            <th>Orders Has Books ID</th>
+            {{!-- <th>Orders Has Books ID</th>
             <th>Order ID</th>
-            <th>Book ID</th>
+            <th>Book ID</th> --}}
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
         </tr>
     </thead>
 
     {{!-- Body section --}}
     <tbody>
 
-        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{!-- For each row, print the ordersHasBooksID, orderID, and bookID in order --}}
         {{#each data}}
-        <tr>
+        <tr data-value={{this.id}}>
             <td>{{this.ordersHasBooksID}}</td>
             <td>{{this.orderID}}</td>
             <td>{{this.bookID}}</td>
@@ -48,18 +53,18 @@
 </table>
 
 <h2>Add Orders has Books</h2>
-<form id="add-orders-has-books" action="/add_orders_has_books">
+<form method="POST" id="add_orders_has_books_form" action="/add_orders_has_books">
     <label for="orderID">orderID:</label>
     <br>
-    <input type="text" id="orderID" name="orderID">
+    <input type="number" id="orderID" name="orderID">
     <br><br>
 
     <label for="bookID">bookID:</label>
     <br>
-    <input type="text" id="bookID" name="bookID">
+    <input type="number" id="bookID" name="bookID">
     <br><br>
 
-    <input type="submit" value="Submit">
+    <input type="submit">
     <br>
 </form>
 <script src="./js/add_orders_has_books.js"></script>

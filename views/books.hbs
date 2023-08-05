@@ -2,7 +2,7 @@
 <nav>
     <a href="/">Home</a>
     |
-    <a href="books.html">Books</a>
+    <a href="books.hbs">Books</a>
     |
     <a href="users.html">Users</a>
     |
@@ -10,7 +10,7 @@
     |
     <a href="reviews.html">Reviews</a>
     |    
-    <a href="orders_has_books.html">Orders has Books</a>
+    <a href="orders_has_books.hbs">Orders has Books</a>
 </nav>
 
 <header>
@@ -26,11 +26,11 @@
         {{!-- For just the first row, we print each key of the row object as a header cell so we
         know what each column means when the page renders --}}
         <tr>
-            <th>Book ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-            <th>Price</th>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
         </tr>
     </thead>
 
@@ -53,7 +53,7 @@
 <br>
 
 <h2>Add Book</h2>
-<form id="add-book">
+<form method="POST" id="add-book" action="/add_books">
     <!-- text input for title -->
     <label for="title">Title:</label>
     <br>
@@ -70,12 +70,19 @@
     <label for="genre">Genre:</label>
     <br>
     <input type="text" id="genre" name="genre">
+    <br><br>
+
+    <!-- text input for price -->
+    <label for="price">Price:</label>
+    <br>
+    <input type="number" step="any" id="price" name="price">
 
     <br><br><br>
 
-    <input type="submit" value="Submit">
+    <input type="submit">
     <br>
 </form>
+<script src="./js/add_books.js"></script>
 
 <br>                
 
