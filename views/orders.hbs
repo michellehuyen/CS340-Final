@@ -1,0 +1,143 @@
+<!-- navigation bar -->
+<nav>
+    <a href="/">Home</a>
+    |
+    <a href="books.hbs">Books</a>
+    |
+    <a href="users.hbs">Users</a>
+    |
+    <a href="orders.hbs">Orders</a>
+    |
+    <a href="reviews.hbs">Reviews</a>
+    |    
+    <a href="orders_has_books.hbs">Orders has Books</a>
+</nav>
+
+<header>
+    <h1>Orders</h1>
+</header>
+
+{{!-- Create a table --}}
+<table id="orders_table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr id="orders-header">
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.orderID}}</td>
+            <td>{{this.userID}}</td>
+            <td>{{this.customerName}}</td>
+            <td>{{this.addressLine1}}</td>
+            <td>{{this.addressLine2}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.postalCode}}</td>
+            <td>{{this.orderDate}}</td>
+            <td>{{this.orderStatus}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.totalDue}}</td>
+            <td>{{this.paymentMethod}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+
+<h2>Add Order</h2>
+<form id="add-order">
+    <label for="userID">userID:</label>
+    <br>
+    <input type="number" id="userID" name="userID">
+    <br><br>
+
+    <label for="customerName">Customer Name:</label>
+    <br>
+    <input type="text" id="customerName" name="customerName">
+    <br><br>
+
+    <label for="addressLine1">Address Line 1:</label>
+    <br>
+    <input type="text" id="addressLine1" name="addressLine1">
+    <br><br>
+
+    <label for="addressLine2">Address Line 2:</label>
+    <br>
+    <input type="text" id="addressLine2" name="addressLine2">
+    <br><br>
+
+    <label for="city">City:</label>
+    <br>
+    <input type="text" id="city" name="city">
+    <br><br>
+
+    <label for="state">State:</label>
+    <br>
+    <input type="text" id="state" name="state">
+    <br><br>
+    
+    <label for="postalCode">Postal Code:</label>
+    <br>
+    <input type="text" id="postalCode" name="postalCode">
+    <br><br>
+
+    <label for="orderDate">Order Date:</label>
+    <br>
+    <input type="date" id="orderDate" name="orderDate">
+    <br><br>
+
+    <label for="orderStatus">Order Status:</label>
+    <br>
+    <input disabled="disabled" id="orderStatus" value="Pending">
+    <br><br>
+
+    <label for="quantity">Quantity:</label>
+    <br>
+    <input type="number" id="quantity" name="quantity">
+    <br><br>
+
+    <label for="totalDue">Total Due:</label>
+    <br>
+    <input type="number" step="any" id="totalDue" name="totalDue">
+    <br><br>
+
+    <label for="paymentMethod">Payment Method:</label>
+    <br>
+    <input type="text" id="paymentMethod" name="paymentMethod">
+    <br><br>
+
+    <input type="submit" value="Submit">
+    <br>
+</form>
+<script src="./js/add_orders.js"></script>
+
+<br>
+
+<h2>Delete Order</h2>
+<form id="cancel-order">
+    <label for="orderID">orderID:</label>
+    <br>
+    <input type="number" id="orderID" name="orderID">
+    <br><br><br>
+
+    <input type="submit" value="Submit">
+    <br>
+</form>
+
+<br><br>

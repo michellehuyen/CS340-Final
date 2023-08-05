@@ -1,0 +1,117 @@
+<!-- navigation bar -->
+<nav>
+    <a href="/">Home</a>
+    |
+    <a href="books.hbs">Books</a>
+    |
+    <a href="users.hbs">Users</a>
+    |
+    <a href="orders.hbs">Orders</a>
+    |
+    <a href="reviews.hbs">Reviews</a>
+    |    
+    <a href="orders_has_books.hbs">Orders has Books</a>
+</nav>
+
+<header>
+    <h1>Reviews</h1>
+</header>
+
+{{!-- Create a table --}}
+<table id="reviews_table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr id="reviews-header">
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.reviewID}}</td>
+            <td>{{this.userID}}</td>
+            <td>{{this.bookID}}</td>
+            <td>{{this.rating}}</td>
+            <td>{{this.description}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+
+<h2>Add Review</h2>
+<form id="add-review">
+    <label for="userID">userID:</label>
+    <br>
+    <input type="number" id="userID" name="userID">
+    <br><br>
+
+    <label for="bookID">bookID:</label>
+    <br>
+    <input type="number" id="bookID" name="bookID">
+    <br><br>
+
+    <label for="rating">Rating (1-5):</label>
+    <br>
+    <select id="rating" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br><br>
+
+    <label for="description">Description:</label>
+    <br>
+    <textarea id="description" name="description" rows="5" cols="35"></textarea>
+    <br><br><br>
+
+    <input type="submit" value="Submit">
+    <br>
+</form>
+
+<br>
+
+<h2>Update Review</h2>
+<form id="edit-review">
+    <label for="reviewID">reviewID:</label>
+    <br>
+    <input type="number" id="reviewID" name="reviewID">
+    <br><br>
+
+    <label for="rating">Rating (1-5):</label>
+    <br>
+    <select id="rating" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br><br>
+
+    <label for="description">Description:</label>
+    <br>
+    <textarea id="description" name="description" rows="5" cols="35"></textarea>
+    <br><br><br>
+
+    <input type="submit">
+    <br>
+</form>
+<script src="./js/add_reviews.js"></script>
+
+<br><br>

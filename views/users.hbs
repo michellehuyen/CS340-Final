@@ -1,0 +1,104 @@
+<!-- navigation bar -->
+<nav>
+    <a href="/">Home</a>
+    |
+    <a href="books.hbs">Books</a>
+    |
+    <a href="users.hbs">Users</a>
+    |
+    <a href="orders.hbs">Orders</a>
+    |
+    <a href="reviews.hbs">Reviews</a>
+    |    
+    <a href="orders_has_books.hbs">Orders has Books</a>
+</nav>
+
+<header>
+    <h1>Users</h1>
+</header>
+
+{{!-- Create a table --}}
+<table id="users_table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr id="users-header">
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.userID}}</td>
+            <td>{{this.fName}}</td>
+            <td>{{this.lName}}</td>
+            <td>{{this.email}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+
+<h2>Add User</h2>
+<form id="add-user">
+    <label for="fName">First Name:</label>
+    <br>
+    <input type="text" id="fName" name="fName">
+    <br><br>
+
+    <label for="lName">Last Name:</label>
+    <br>
+    <input type="text" id="lName" name="lName">
+    <br><br>
+
+    <label for="email">Email:</label>
+    <br>
+    <input type="email" id="email" name="email">
+    <br><br><br>
+    
+    <input type="submit">
+    <br>
+</form>
+
+<br>
+
+<h2>Update User</h2>
+<form id="edit-user-info">
+    <label for="userID">userID:</label>
+    <br>
+    <input type="number" id="userID" name="userID">
+    <br><br>
+
+    <label for="fName">First Name:</label>
+    <br>
+    <input type="text" id="fName" name="fName">
+    <br><br>
+
+    <label for="lName">Last Name:</label>
+    <br>
+    <input type="text" id="lName" name="lName">
+    <br><br>
+
+    <label for="email">Email:</label>
+    <br>
+    <input type="email" id="email" name="email">
+    <br><br><br>
+    
+    <input type="submit">
+    <br>
+</form>
+<script src="./js/add_users.js"></script>
+
+<br><br>

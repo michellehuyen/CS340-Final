@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cloud Books</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <p>
+            <a href="/">Home</a>
+            |
+            <a href="books.html">Books</a>
+            |
+            <a href="users.html">Users</a>
+            |
+            <a href="orders.html">Orders</a>
+            |
+            <a href="reviews.html">Reviews</a>
+            |    
+            <a href="orders_has_books.html">Orders has Books</a>
+        </p>
+        <h1>Reviews</h1>
+        <h2>Browse Reviews</h2>
+        <div id="browse">
+            <table>
+                <tr class="category" id="reviews-header">
+                    <th>reviewID</th>
+                    <th>userID</th>
+                    <th>bookID</th>
+                    <th>rating</th>
+                    <th>description</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>34</td>
+                    <td>4</td>
+                    <td>I enjoyed learning about Bitcoin</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>43</td>
+                    <td>3</td>
+                    <td>This book wasn't that great</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>23</td>
+                    <td>5</td>
+                    <td>Best book I've read by far!</td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div id="insert">
+            <h2>Add Review</h2>
+            <form id="add-review">
+                <label for="userID">userID:</label>
+                <br>
+                <input type="number" id="userID" name="userID">
+                <br><br>
+
+                <label for="bookID">bookID:</label>
+                <br>
+                <input type="number" id="bookID" name="bookID">
+                <br><br>
+
+                <label for="rating">Rating (1-5):</label>
+                <br>
+                <select id="rating" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br><br>
+
+                <label for="description">Description:</label>
+                <br>
+                <textarea id="description" name="description" rows="5" cols="35"></textarea>
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
+        </div>
+
+        <br>
+
+        <div id="update">
+            <h2>Update Review</h2>
+            <form id="edit-review">
+                <label for="reviewID">reviewID:</label>
+                <br>
+                <input type="number" id="reviewID" name="reviewID">
+                <br><br>
+
+                <label for="rating">Rating (1-5):</label>
+                <br>
+                <select id="rating" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <br><br>
+
+                <label for="description">Description:</label>
+                <br>
+                <textarea id="description" name="description" rows="5" cols="35"></textarea>
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
+        </div>
+
+        <!-- <br>
+
+        <div id="delete">
+            <h2>Delete Review</h2>
+            <form id="delete-review">
+                <label for="reviewID">reviewID:</label>
+                <br>
+                <input type="number" id="reviewID" name="reviewID">
+                <br><br><br>
+
+                <input type="submit" value="Submit">
+                <br>
+            </form>
+        </div> -->
+        <br><br>
+    </body>
+</html>
