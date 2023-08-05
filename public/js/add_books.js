@@ -11,7 +11,7 @@ addBooksForm.addEventListener("submit", function (e) {
     let inputTitle = document.getElementById("title");
     let inputAuthor = document.getElementById("author");
     let inputGenre = document.getElementById("genre");
-    let inputPrice = document.getElementById("bookID");
+    let inputPrice = document.getElementById("price");
 
     // Get the values from the form fields
     let titleValue = inputTitle.value;
@@ -60,7 +60,7 @@ addBooksForm.addEventListener("submit", function (e) {
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
-    let currentTable = document.getElementById("orders_has_books_table");
+    let currentTable = document.getElementById("books_table");
 
     // Get the location where we should insert the new row (end of table)
     let newRowIndex = currentTable.rows.length;

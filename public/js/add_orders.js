@@ -16,7 +16,7 @@ addOrdersForm.addEventListener("submit", function (e) {
     let inputState = document.getElementById("state");
     let inputPostalCode = document.getElementById("postalCode");
     let inputOrderDate = document.getElementById("orderDate");
-    let inputOrderStatus = document.getElementById("orderState");
+    // let inputOrderStatus = document.getElementById("orderState");
     let inputQuantity = document.getElementById("quantity");
     let inputTotalDue = document.getElementById("totalDue");
     let inputPaymentMethod = document.getElementById("paymentMethod");
@@ -30,7 +30,7 @@ addOrdersForm.addEventListener("submit", function (e) {
     let stateValue = inputState.value;
     let postalCodeValue = inputPostalCode.value;
     let orderDateValue = inputOrderDate.value;
-    let orderStatusValue = inputOrderStatus.value;
+    // let orderStatusValue = inputOrderStatus.value;
     let quantityValue = inputQuantity.value;
     let totalDueValue = inputTotalDue.value;
     let paymentMethodValue = inputPaymentMethod.value;
@@ -45,10 +45,10 @@ addOrdersForm.addEventListener("submit", function (e) {
         state: stateValue,
         postalCode: postalCodeValue,
         orderDate: orderDateValue,
-        orderStatus: orderStatusValue,
+        // orderStatus: orderStatusValue,
         quantity: quantityValue,
         totalDue: totalDueValue,
-        paymentMethod: paymentMethodValue,
+        paymentMethod: paymentMethodValue
     }
     
     // Setup our AJAX request

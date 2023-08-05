@@ -5,9 +5,11 @@
 var express = require('express');   // We are using the express library for the web server
 var app     = express();            // We need to instantiate an express object to interact with the server in our code
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 PORT        = 8009;                 // Set a port number at the top so it's easy to change in the future
+
 const path = require('path');
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Database
 var db = require('./db-connector')
@@ -20,7 +22,7 @@ app.engine('.hbs', engine({extname: ".hbs"}));  // Create an instance of the han
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
 // Static Files
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 /*
     ROUTES
@@ -164,8 +166,10 @@ app.get('/reviews.hbs', function(req, res) {
 
 app.post('/add_reviews', function(req, res){
     let data = req.body;
+    let userID = parseInt(data.userID);
+    let bookID = parseInt(data.bookID);
 
-    query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES ('${data.userID}', '${data.bookID}', '${data.rating}', '${data.description}')`;
+    query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES (${data.userID}, ${data.bookID}, '${data.rating}', '${data.description}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)

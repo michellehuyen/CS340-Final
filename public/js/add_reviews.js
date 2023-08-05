@@ -40,9 +40,10 @@ addReviewsForm.addEventListener("submit", function (e) {
             addRowToTable(xhttp.response);
 
             // Clear the input fields for another transaction
-            inputFirstName.value = '';
-            inputLastName.value = '';
-            inputEmail.value = '';
+            inputUserID.value = '';
+            inputBookID.value = '';
+            inputRating.value = '';
+            inputDescription.value = '';
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")
@@ -59,7 +60,7 @@ addReviewsForm.addEventListener("submit", function (e) {
 addRowToTable = (data) => {
 
     // Get a reference to the current table on the page and clear it out.
-    let currentTable = document.getElementById("users_table");
+    let currentTable = document.getElementById("reviews_table");
 
     // Get the location where we should insert the new row (end of table)
     let newRowIndex = currentTable.rows.length;
