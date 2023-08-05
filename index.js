@@ -66,7 +66,8 @@ app.post('/add_books', function(req, res){
                 }
                 // If all went well, send the results of the query back.
                 else {
-                    // res.redirect('/books.hbs'); // Redirect back to the staff page after successful insert
+                    // Redirect back to the books page after successful insert
+                    // res.redirect('/books.hbs');
                     res.send(rows);
                 }
             })
@@ -129,7 +130,8 @@ app.post('/add_orders_has_books', function(req, res){
                 }
                 // If all went well, send the results of the query back.
                 else {
-                    // res.redirect('/orders_has_books.hbs'); // Redirect back to the staff page after successful insert
+                    // Redirect back to the orders_has_books page after successful insert
+                    // res.redirect('/orders_has_books.hbs');
                     res.send(rows);
                 }
             })
