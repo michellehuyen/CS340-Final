@@ -18,7 +18,7 @@
 </header>
 
 {{!-- Create a table --}}
-<table id="orders_has_books_table">
+<table id="OhB-table">
 
     {{!-- Header section --}}
     <thead>
@@ -42,7 +42,7 @@
 
         {{!-- For each row, print the ordersHasBooksID, orderID, and bookID in order --}}
         {{#each data}}
-        <tr data-value={{this.id}}>
+        <tr data-value={{this.ordersHasBooksID}}>
             <td>{{this.ordersHasBooksID}}</td>
             <td>{{this.orderID}}</td>
             <td>{{this.bookID}}</td>

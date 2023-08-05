@@ -17,7 +17,7 @@ addReviewsForm.addEventListener("submit", function (e) {
     let userIDValue = inputUserID.value;
     let bookIDValue = inputBookID.value;
     let ratingValue = inputRating.value;
-    let descriptionValue = inputRating.value;
+    let descriptionValue = inputDescription.value;
 
     // Put our data we want to send in a javascript object
     let data = {

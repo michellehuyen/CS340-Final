@@ -39,7 +39,7 @@
 
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
-        <tr>
+        <tr data-value={{this.userID}}>
             <td>{{this.userID}}</td>
             <td>{{this.fName}}</td>
             <td>{{this.lName}}</td>
