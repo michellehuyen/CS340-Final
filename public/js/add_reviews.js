@@ -8,10 +8,10 @@ addReviewsForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Get form fields we need to get data from
-    let inputUserID = document.getElementById("userID");
-    let inputBookID = document.getElementById("bookID");
-    let inputRating = document.getElementById("rating");
-    let inputDescription = document.getElementById("description");
+    let inputUserID = document.getElementById("addUserID");
+    let inputBookID = document.getElementById("addBookID");
+    let inputRating = document.getElementById("addRating");
+    let inputDescription = document.getElementById("addDescription");
 
     // Get the values from the form fields
     let userIDValue = inputUserID.value;
@@ -40,16 +40,15 @@ addReviewsForm.addEventListener("submit", function (e) {
             addRowToTable(xhttp.response);
 
             // Clear the input fields for another transaction
-            inputUserID.value = '';
-            inputBookID.value = '';
-            inputRating.value = '';
+            inputUserID.value = 'Select a userID';
+            inputBookID.value = 'Select a bookID';
+            inputRating.value = '1';
             inputDescription.value = '';
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")
         }
     }
-
     // Send the request and wait for the response
     xhttp.send(JSON.stringify(data));
 

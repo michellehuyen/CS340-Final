@@ -56,17 +56,30 @@
 <form id="add-review">
     <label for="userID">userID:</label>
     <br>
-    <input type="number" id="userID" name="userID">
+    <select id="addUserID" name="addUserID">
+        <option value="Select a userID">Select a userID</option>
+        {{#each data}}
+        <option value="{{this.userID}}">{{this.userID}}</option>
+        {{/each}}
+    </select>
+    {{!-- <input type="number" id="addUserID" name="addUserID"> --}}
     <br><br>
 
-    <label for="bookID">bookID:</label>
+    <label for="addBookID">bookID:</label>
     <br>
-    <input type="number" id="bookID" name="bookID">
+    <select id="addBookID" name="addBookID">
+        <option value="Select a bookID">Select a bookID</option>
+        {{#each data}}
+        <option value="{{this.bookID}}">{{this.bookID}}</option>
+        {{/each}}
+    </select>
+    {{!-- <input type="number" id="addBookID" name="addBookID"> --}}
     <br><br>
 
-    <label for="rating">Rating (1-5):</label>
+    <label for="addRating">Rating (1-5):</label>
     <br>
-    <select id="rating" name="rating">
+    {{!-- <input type="number" id="addRating" name="addRating"> --}}
+    <select id="addRating" name="addRating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -75,12 +88,12 @@
     </select>
     <br><br>
 
-    <label for="description">Description:</label>
+    <label for="addDescription">Description:</label>
     <br>
-    <textarea id="description" name="description" rows="5" cols="35"></textarea>
+    <textarea id="addDescription" name="addDescription" rows="5" cols="35"></textarea>
     <br><br><br>
 
-    <input type="submit" value="Submit">
+    <input type="submit">
     <br>
 </form>
 <script src="./js/add_reviews.js"></script>
@@ -88,15 +101,15 @@
 <br>
 
 <h2>Update Review</h2>
-<form id="edit-review">
+<form id="update-review">
     <label for="reviewID">reviewID:</label>
     <br>
     <input type="number" id="reviewID" name="reviewID">
     <br><br>
 
-    <label for="rating">Rating (1-5):</label>
+    <label for="updateRating">Rating (1-5):</label>
     <br>
-    <select id="rating" name="rating">
+    <select id="updateRating" name="updateRating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -105,14 +118,14 @@
     </select>
     <br><br>
 
-    <label for="description">Description:</label>
+    <label for="updateDescription">Description:</label>
     <br>
-    <textarea id="description" name="description" rows="5" cols="35"></textarea>
+    <textarea id="updateDescription" name="updateDescription" rows="5" cols="35"></textarea>
     <br><br><br>
 
     <input type="submit">
     <br>
 </form>
-<script src="./js/add_reviews.js"></script>
+{{!-- <script src="./js/add_reviews.js"></script> --}}
 
 <br><br>

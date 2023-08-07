@@ -51,9 +51,10 @@ app.get('/books.hbs', function(req, res) {
 app.post('/add_books', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
+    let price = parseInt(data.price);
 
     // Create the query and run it on the database
-    query1 = `INSERT INTO Books (title, author, genre, price) VALUES ('${data.title}', '${data.author}', '${data.genre}', '${data.price}')`;
+    query1 = `INSERT INTO Books (title, author, genre, price) VALUES ('${data.title}', '${data.author}', '${data.genre}', ${price})`;
     db.pool.query(query1, function(error, rows, fields) {
         // Check to see if there was an error
         if (error) {
@@ -168,8 +169,9 @@ app.post('/add_reviews', function(req, res){
     let data = req.body;
     let userID = parseInt(data.userID);
     let bookID = parseInt(data.bookID);
+    let rating = parseInt(data.rating);
 
-    query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES (${data.userID}, ${data.bookID}, '${data.rating}', '${data.description}')`;
+    query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES (${userID}, ${bookID}, ${rating}, '${data.description}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)
@@ -202,8 +204,8 @@ app.get('/orders_has_books.hbs', function(req, res) {
 
 app.post('/add_orders_has_books', function(req, res){
     let data = req.body;
-    let orderID = parseInt(data.orderID)
-    let bookID = parseInt(data.bookID)
+    let orderID = parseInt(data.orderID);
+    let bookID = parseInt(data.bookID);
 
     query1 = `INSERT INTO Orders_has_Books (orderID, bookID) VALUES (${orderID}, ${bookID})`;
     db.pool.query(query1, function(error, rows, fields) {

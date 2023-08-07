@@ -54,13 +54,25 @@
 
 <h2>Add Orders has Books</h2>
 <form id="add_orders_has_books_form">
-    <label for="orderID">orderID:</label>
+    <label for="addOrderID">orderID:</label>
     <br>
+    {{!-- <select id="addOrderID" name="addOrderID">
+        <option value="Select a orderID">Select a orderID</option>
+        {{#each data}}
+        <option value="{{this.orderID}}">{{this.orderID}}</option>
+        {{/each}}
+    </select> --}}
     <input type="number" id="orderID" name="orderID">
     <br><br>
 
     <label for="bookID">bookID:</label>
     <br>
+    {{!-- <select id="addBookID" name="addBookID">
+        <option value="Select a bookID">Select a bookID</option>
+        {{#each data}}
+        <option value="{{this.bookID}}">{{this.bookID}}</option>
+        {{/each}}
+    </select> --}}
     <input type="number" id="bookID" name="bookID">
     <br><br>
 

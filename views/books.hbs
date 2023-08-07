@@ -55,27 +55,27 @@
 <h2>Add Book</h2>
 <form id="add-book">
     <!-- text input for title -->
-    <label for="title">Title:</label>
+    <label for="addTitle">Title:</label>
     <br>
-    <input type="text" id="title" name="title">
+    <input type="text" id="addTitle" name="addTitle">
     <br><br>
 
     <!-- text input for author -->
-    <label for="author">Author:</label>
+    <label for="addAuthor">Author:</label>
     <br>
-    <input type="text" id="author" name="author">
+    <input type="text" id="addAuthor" name="addAuthor">
     <br><br>
     
     <!-- text input for genre -->
-    <label for="genre">Genre:</label>
+    <label for="addGenre">Genre:</label>
     <br>
-    <input type="text" id="genre" name="genre">
+    <input type="text" id="addGenre" name="addGenre">
     <br><br>
 
     <!-- text input for price -->
-    <label for="price">Price:</label>
+    <label for="addPrce">Price:</label>
     <br>
-    <input type="number" step="any" id="price" name="price">
+    <input type="number" step="any" id="addPrice" name="addPrice">
 
     <br><br><br>
 
@@ -93,11 +93,17 @@
     <br>
     <!-- <input type="text" id="title" name="title">
     <br><br> -->
-    <select name="books" id="books">
+    {{!-- <select name="books" id="books">
         <option value="The Handmaid's Tale">The Handmaid's Tale</option>
         <option value="The Bitcoin Standard">The Bitcoin Standard</option>
         <option value="The Price of Tomorrow">The Price of Tomorrow</option>
         <option value="Permanent Record">Permanent Record</option>
+    </select> --}}
+    <select id="searchBook" name="searchBook">
+        <option value="Select a Book Title">Select a Book Title</option>
+        {{#each data}}
+        <option value="{{this.title}}">{{this.title}}</option>
+        {{/each}}
     </select>
 
     <br><br><br>

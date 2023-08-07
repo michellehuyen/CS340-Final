@@ -8,10 +8,10 @@ addBooksForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Get form fields we need to get data from
-    let inputTitle = document.getElementById("title");
-    let inputAuthor = document.getElementById("author");
-    let inputGenre = document.getElementById("genre");
-    let inputPrice = document.getElementById("price");
+    let inputTitle = document.getElementById("addTitle");
+    let inputAuthor = document.getElementById("addAuthor");
+    let inputGenre = document.getElementById("addGenre");
+    let inputPrice = document.getElementById("addPrice");
 
     // Get the values from the form fields
     let titleValue = inputTitle.value;

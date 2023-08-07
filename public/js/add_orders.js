@@ -8,7 +8,7 @@ addOrdersForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Get form fields we need to get data from
-    let inputUserID = document.getElementById("userID");
+    // let inputUserID = document.getElementById("userID");
     let inputCustomerName = document.getElementById("customerName");
     let inputAddrLine1 = document.getElementById("addressLine1");
     let inputAddrLine2 = document.getElementById("addressLine2");
@@ -16,13 +16,13 @@ addOrdersForm.addEventListener("submit", function (e) {
     let inputState = document.getElementById("state");
     let inputPostalCode = document.getElementById("postalCode");
     let inputOrderDate = document.getElementById("orderDate");
-    // let inputOrderStatus = document.getElementById("orderState");
+    let inputOrderStatus = document.getElementById("orderState");
     let inputQuantity = document.getElementById("quantity");
     let inputTotalDue = document.getElementById("totalDue");
     let inputPaymentMethod = document.getElementById("paymentMethod");
 
     // Get the values from the form fields
-    let userIDValue = inputUserID.value;
+    // let userIDValue = inputUserID.value;
     let customerNameValue = inputCustomerName.value;
     let addrLine1Value = inputAddrLine1.value;
     let addrLine2Value = inputAddrLine2.value;
@@ -30,14 +30,14 @@ addOrdersForm.addEventListener("submit", function (e) {
     let stateValue = inputState.value;
     let postalCodeValue = inputPostalCode.value;
     let orderDateValue = inputOrderDate.value;
-    // let orderStatusValue = inputOrderStatus.value;
+    let orderStatusValue = inputOrderStatus.value;
     let quantityValue = inputQuantity.value;
     let totalDueValue = inputTotalDue.value;
     let paymentMethodValue = inputPaymentMethod.value;
 
     // Put our data we want to send in a javascript object
     let data = {
-        userID: userIDValue,
+        // userID: userIDValue,
         customerName: customerNameValue,
         addressLine1: addrLine1Value,
         addressLine2: addrLine2Value,
@@ -45,7 +45,7 @@ addOrdersForm.addEventListener("submit", function (e) {
         state: stateValue,
         postalCode: postalCodeValue,
         orderDate: orderDateValue,
-        // orderStatus: orderStatusValue,
+        orderStatus: orderStatusValue,
         quantity: quantityValue,
         totalDue: totalDueValue,
         paymentMethod: paymentMethodValue
@@ -64,7 +64,7 @@ addOrdersForm.addEventListener("submit", function (e) {
             addRowToTable(xhttp.response);
 
             // Clear the input fields for another transaction
-            inputUserID.value = '';
+            // inputUserID.value = '';
             inputCustomerName.value = '';
             inputAddrLine1.value = '';
             inputAddrLine2.value = '';
@@ -72,7 +72,7 @@ addOrdersForm.addEventListener("submit", function (e) {
             inputState.value = '';
             inputPostalCode.value = '';
             inputOrderDate.value = '';
-            // inputOrderStatus.value;
+            inputOrderStatus.value = 'Pending';
             inputQuantity.value = '';
             inputTotalDue.value = '';
             inputPaymentMethod.value = '';
