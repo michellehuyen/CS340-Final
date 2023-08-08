@@ -34,6 +34,7 @@ addReviewsForm.addEventListener("submit", function (e) {
 
     // Tell our AJAX request how to resolve
     xhttp.onreadystatechange = () => {
+        console.log(xhttp.readyState)
         if (xhttp.readyState == 4 && xhttp.status == 200) {
 
             // Add the new data to the table
@@ -75,14 +76,13 @@ addRowToTable = (data) => {
     let bookIDCell = document.createElement("TD");
     let ratingCell = document.createElement("TD");
     let descriptionCell = document.createElement("TD");
-
     // Fill the cells with correct data
     idCell.innerText = newRow.reviewID;
     userIDCell.innerText = newRow.userID;
     bookIDCell.innerText = newRow.bookID;
     ratingCell.innerText = newRow.rating;
     descriptionCell.innerText = newRow.description;
-
+    
     // Add the cells to the row 
     row.appendChild(idCell);
     row.appendChild(userIDCell);

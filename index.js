@@ -160,7 +160,7 @@ app.put('/update-user', function (req, res, next) {
     ORDERS
 */
 app.get('/orders.hbs', function(req, res) {
-    let getOrders = "select * from Orders;";
+    let getOrders = "SELECT * FROM Orders;";
     db.pool.query(getOrders, function(error, rows, fields){
         res.render('orders', {data: rows})
     })
@@ -198,7 +198,11 @@ app.post('/add_orders', function(req, res){
 app.get('/reviews.hbs', function(req, res) {
     let getReviews = "SELECT * FROM Reviews;";
     db.pool.query(getReviews, function(error, rows, fields){
-        res.render('reviews', {data: rows})
+        let getBookIDs = "SELECT bookID FROM Books;";
+        db.pool.query(getBookIDs, function(error, bookRows, fields){
+            res.render('reviews', { data: rows, bookIDs: bookRows });
+        });
+        // res.render('reviews', { data: rows });
     })
 })
 
@@ -207,7 +211,6 @@ app.post('/add_reviews', function(req, res){
     let userID = parseInt(data.userID);
     let bookID = parseInt(data.bookID);
     let rating = parseInt(data.rating);
-
     query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES (${userID}, ${bookID}, ${rating}, '${data.description}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
