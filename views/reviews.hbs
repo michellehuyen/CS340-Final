@@ -39,7 +39,7 @@
 
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
-        <tr>
+        <tr data-value={{this.reviewID}}>
             <td>{{this.reviewID}}</td>
             <td>{{this.userID}}</td>
             <td>{{this.bookID}}</td>
@@ -102,14 +102,20 @@
 
 <h2>Update Review</h2>
 <form id="update-review">
-    <label for="reviewID">reviewID:</label>
+    <label for="update-reviewID">reviewID:</label>
     <br>
-    <input type="number" id="reviewID" name="reviewID">
+    <select id="update-reviewID" name="update-reviewID">
+        <option value="Select a reviewID">Select a reviewID</option>
+        {{#each data}}
+        <option value="{{this.reviewID}}">{{this.reviewID}}</option>
+        {{/each}}
+    </select>
+    {{!-- <input type="number" id="reviewID" name="reviewID"> --}}
     <br><br>
 
-    <label for="updateRating">Rating (1-5):</label>
+    <label for="update-rating">Rating (1-5):</label>
     <br>
-    <select id="updateRating" name="updateRating">
+    <select id="update-rating" name="update-rating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -118,14 +124,14 @@
     </select>
     <br><br>
 
-    <label for="updateDescription">Description:</label>
+    <label for="update-description">Description:</label>
     <br>
-    <textarea id="updateDescription" name="updateDescription" rows="5" cols="35"></textarea>
+    <textarea id="update-description" name="update-description" rows="5" cols="35"></textarea>
     <br><br><br>
 
     <input type="submit">
     <br>
 </form>
-{{!-- <script src="./js/add_reviews.js"></script> --}}
+<script src="./js/update_reviews.js"></script>
 
 <br><br>

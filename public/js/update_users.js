@@ -1,4 +1,3 @@
-
 // Get the objects we need to modify
 let updatePersonForm = document.getElementById('update-user');
 
@@ -41,6 +40,7 @@ updatePersonForm.addEventListener("submit", function (e) {
 
             // Add the new data to the table
             updateRow(data, userIDValue);
+
             inputUserID.value = 'Select a userID';
             inputFName.value = '';
             inputLName.value = '';
@@ -73,7 +73,7 @@ function updateRow(data, userID){
 
             // Get td of first name value
             let tdFName = updateRowIndex.getElementsByTagName("td")[1];
-            // Reassign homeworld to our value we updated to
+            // Reassign first name to our value we updated to
             tdFName.innerHTML = data.fName;
 
             // Get td of last name value

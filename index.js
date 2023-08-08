@@ -232,6 +232,35 @@ app.post('/add_reviews', function(req, res){
     })
 })
 
+app.put('/update-review', function (req, res, next) {
+    let data = req.body;
+
+    let reviewID = parseInt(data.reviewID);
+    let rating = parseInt(data.rating);
+    let description = data.description;
+
+    let queryUpdateReview = `UPDATE Reviews SET rating = ?, description = ? WHERE Reviews.reviewID = ?`;
+    let selectReview = `SELECT * FROM Reviews WHERE reviewID = ?`
+
+    db.pool.query(queryUpdateReview, [rating, description, reviewID], function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        }
+        else {
+            db.pool.query(selectReview, [rating, description, reviewID], function(error, rows, fields) {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                else {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+});
+
 /*
     ORDERS_HAS_BOOKS
 */
