@@ -32,7 +32,6 @@ create or replace table Orders_has_Books(
 CREATE OR REPLACE TABLE Orders (
     orderID int not NULL AUTO_INCREMENT,
     userID int not NULL,
-    customerName varchar(255) not NULL,
     addressLine1 varchar(255) not NULL,
     addressLine2 varchar(255) NULL,
     city varchar(255) not NULL,
@@ -120,8 +119,7 @@ values
 
 -- Insert values into the Orders table
 INSERT INTO Orders (
-    -- userID,
-    customerName,
+    userID,
     addressLine1,
     addressLine2,
     city,
@@ -135,8 +133,7 @@ INSERT INTO Orders (
 )
 VALUES
 (
-    -- 1,
-    "Sam Doe",
+    1,
     "1234 Main st.",
     NULL,
     "Atlanta",
@@ -149,8 +146,7 @@ VALUES
     "visa 0978"
 ),
 (
-    -- 2,
-    "Joy Soh",
+    2,
     "5678 Canyon Road",
     NULL,
     "Sherwood",
@@ -163,8 +159,7 @@ VALUES
     "mastercard 8765"
 ),
 (
-    -- 3,
-    "Bill Goldberg",
+    3,
     "210 Bowman St.",
     "APT. #G300",
     "Hamburg",

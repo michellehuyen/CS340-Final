@@ -40,8 +40,7 @@ values(
 );
 
 insert into Orders(
-    -- userID,
-    customerName,
+    userID,
     addressLine1,
     addressLine2,
     city,
@@ -54,8 +53,7 @@ insert into Orders(
     paymentMethod
 )
 values(
-    -- :userIDInput,
-    :customerNameInput,
+    :userIDInput,
     :addressLine1Input,
     :addressLine2Input,
     :cityInput,
