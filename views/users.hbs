@@ -39,7 +39,7 @@
 
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
-        <tr>
+        <tr data-value={{this.userID}}>
             <td>{{this.userID}}</td>
             <td>{{this.fName}}</td>
             <td>{{this.lName}}</td>
@@ -71,34 +71,40 @@
     <input type="submit">
     <br>
 </form>
+<script src="./js/add_users.js"></script>
 
 <br>
 
 <h2>Update User</h2>
-<form id="edit-user-info">
+<form id="update-user">
     <label for="userID">userID:</label>
     <br>
-    <input type="number" id="userID" name="userID">
+    <select name="update-userID" id="update-userID">
+        <option value="Select a userID">Select a userID</option>
+        {{#each data}}
+        <option value="{{this.userID}}">{{this.userID}}</option>
+        {{/each}}
+    </select>
     <br><br>
 
-    <label for="fName">First Name:</label>
+    <label for="update-fName">First Name:</label>
     <br>
-    <input type="text" id="fName" name="fName">
+    <input type="text" id="update-fName" name="update-fName">
     <br><br>
 
-    <label for="lName">Last Name:</label>
+    <label for="update-lName">Last Name:</label>
     <br>
-    <input type="text" id="lName" name="lName">
+    <input type="text" id="update-lName" name="update-lName">
     <br><br>
 
-    <label for="email">Email:</label>
+    <label for="update-email">Email:</label>
     <br>
-    <input type="email" id="email" name="email">
+    <input type="email" id="update-email" name="update-email">
     <br><br><br>
     
     <input type="submit">
     <br>
 </form>
-<script src="./js/add_users.js"></script>
+<script src="./js/update_users.js"></script>
 
 <br><br>

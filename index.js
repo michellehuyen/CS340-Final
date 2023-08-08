@@ -119,6 +119,43 @@ app.post('/add_users', function(req, res){
     })
 })
 
+app.put('/update-user', function (req, res, next) {
+    let data = req.body;
+
+    let userID = parseInt(data.userID)
+    let fName = data.fName;
+    let lName = data.lName;
+    let email = data.email;
+
+    let queryUpdateUser = `UPDATE Users SET fName = ?, lName = ?, email = ? WHERE Users.userID = ?`;
+    let selectUser = `SELECT * FROM Users WHERE userID = ?`
+
+    // Run the 1st query
+    db.pool.query(queryUpdateUser, [fName, lName, email, userID], function (error, rows, fields) {
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error);
+            res.sendStatus(400);
+        }
+
+        // If there was no error, return that data so we can use it to update the people's
+        // table on the front-end
+        else {
+            // Run the second query
+            db.pool.query(selectUser, [fName, lName, email, userID], function(error, rows, fields) {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                }
+                else {
+                    res.send(rows);
+                }
+            })
+        }
+    })
+});
+
 /*
     ORDERS
 */
