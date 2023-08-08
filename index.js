@@ -51,7 +51,8 @@ app.get('/books.hbs', function(req, res) {
 app.post('/add_books', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
-    let price = parseInt(data.price);
+
+    let price = parseFloat(data.price);
 
     // Create the query and run it on the database
     query1 = `INSERT INTO Books (title, author, genre, price) VALUES ('${data.title}', '${data.author}', '${data.genre}', ${price})`;
@@ -122,7 +123,7 @@ app.post('/add_users', function(req, res){
 app.put('/update-user', function (req, res, next) {
     let data = req.body;
 
-    let userID = parseInt(data.userID)
+    let userID = parseInt(data.userID);
     let fName = data.fName;
     let lName = data.lName;
     let email = data.email;
@@ -133,12 +134,10 @@ app.put('/update-user', function (req, res, next) {
     // Run the 1st query
     db.pool.query(queryUpdateUser, [fName, lName, email, userID], function (error, rows, fields) {
         if (error) {
-
             // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
             console.log(error);
             res.sendStatus(400);
         }
-
         // If there was no error, return that data so we can use it to update the people's
         // table on the front-end
         else {
@@ -208,9 +207,11 @@ app.get('/reviews.hbs', function(req, res) {
 
 app.post('/add_reviews', function(req, res){
     let data = req.body;
+    
     let userID = parseInt(data.userID);
     let bookID = parseInt(data.bookID);
     let rating = parseInt(data.rating);
+
     query1 = `INSERT INTO Reviews (userID, bookID, rating, description) VALUES (${userID}, ${bookID}, ${rating}, '${data.description}')`;
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
@@ -273,6 +274,7 @@ app.get('/orders_has_books.hbs', function(req, res) {
 
 app.post('/add_orders_has_books', function(req, res){
     let data = req.body;
+    
     let orderID = parseInt(data.orderID);
     let bookID = parseInt(data.bookID);
 

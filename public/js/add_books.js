@@ -8,16 +8,20 @@ addBooksForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Get form fields we need to get data from
-    let inputTitle = document.getElementById("addTitle");
-    let inputAuthor = document.getElementById("addAuthor");
-    let inputGenre = document.getElementById("addGenre");
-    let inputPrice = document.getElementById("addPrice");
+    let inputTitle = document.getElementById("add-title");
+    let inputAuthor = document.getElementById("add-author");
+    let inputGenre = document.getElementById("add-genre");
+    let inputPrice = document.getElementById("add-price");
 
     // Get the values from the form fields
     let titleValue = inputTitle.value;
     let authorValue = inputAuthor.value;
     let genreValue = inputGenre.value;
     let priceValue = inputPrice.value;
+
+    titleValue = titleValue.replace(/'/g, "''");
+    authorValue = authorValue.replace(/'/g, "''");
+    genreValue = genreValue.replace(/'/g, "''");
 
     // Put our data we want to send in a javascript object
     let data = {
@@ -26,6 +30,8 @@ addBooksForm.addEventListener("submit", function (e) {
         genre: genreValue,
         price: priceValue
     }
+    
+    // console.log("!!!", data);
     
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
