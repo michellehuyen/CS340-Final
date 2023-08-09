@@ -66,3 +66,11 @@ input, select {
     height: 1.6em;
     width: 300px;
 }
+
+#submit-search, #reset-btn {
+    width: 140px;
+}
+
+#submit-search {
+    margin-right: 1.19em;
+}

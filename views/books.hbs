@@ -86,19 +86,14 @@
 
 <br>                
 
+{{!-- Citation for the following section of code: --}}
+{{!-- Adapted from Step 5 - Step 6 - Dynamically Filling Dropdowns and Adding a Search Box --}}
+{{!-- https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%206%20-%20Dynamically%20Filling%20Dropdowns%20and%20Adding%20a%20Search%20Box --}}
 <h2>Search for a Book</h2>
-<form id="search-for-book">
+<form id="search-for-book" method='GET' action='/books.hbs'>
     <!-- drop down list to search for a book -->
     <label for="title">Title:</label>
     <br>
-    <!-- <input type="text" id="title" name="title">
-    <br><br> -->
-    {{!-- <select name="books" id="books">
-        <option value="The Handmaid's Tale">The Handmaid's Tale</option>
-        <option value="The Bitcoin Standard">The Bitcoin Standard</option>
-        <option value="The Price of Tomorrow">The Price of Tomorrow</option>
-        <option value="Permanent Record">Permanent Record</option>
-    </select> --}}
     <select id="searchBook" name="searchBook">
         <option value="Select a Book Title">Select a Book Title</option>
         {{#each data}}
@@ -108,9 +103,10 @@
 
     <br><br><br>
 
-    <input type="submit">
-    <br>                
+    <input type="submit" id="submit-search">
+    <button type="button" id="reset-btn" onclick="location.href='/books.hbs'">Reset</button>
+
+    <br>
 </form>
-<script src="./js/get_books.js"></script>
 
 <br><br>

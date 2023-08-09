@@ -6,7 +6,7 @@ var express = require('express');   // We are using the express library for the 
 var app     = express();            // We need to instantiate an express object to interact with the server in our code
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-PORT        = 8006;                 // Set a port number at the top so it's easy to change in the future
+PORT        = 8008;                 // Set a port number at the top so it's easy to change in the future
 
 const path = require('path');
 app.use(express.static(path.join(__dirname, '/public')));
@@ -41,25 +41,27 @@ app.get('/', function(req, res) {
     BOOKS
 */
 app.get('/books.hbs', function(req, res) {
-    let getBooks = "SELECT * FROM Books;";
-    db.pool.query(getBooks, function(error, rows, fields){
-        res.render('books', {data: rows})
-    })
-})
+    // Declare Query 1
+    let getBooks;
+    // If there is no query string, we just perform a basic SELECT
+    if (!req.query.searchBook || req.query.searchBook === "Select a Book Title") {
+        getBooks = "SELECT * FROM Books;";
+    }
+    // If there is a query string, we assume this is a search, and return desired results
+    else {
+        getBooks = `SELECT * FROM Books WHERE title LIKE "${req.query.searchBook}%"`
+    }
 
-app.get('/get_books', function(req, res) {
-    let query1 = `SELECT * FROM Books WHERE title LIKE "${req.query.title}%"`;
-    db.pool.query(query1, function(error, rows, fields) {
+    db.pool.query(getBooks, function(error, rows, fields) {
         if (error) {
             console.log(error)
-            res.sendStatus(400);
+            res.sendSataus(400);
         }
         else {
-            res.send(rows);
+            res.render('books', {data: rows})
         }
     })
 })
-
 
 app.post('/add_books', function(req, res){
     // Capture the incoming data and parse it back to a JS object
@@ -91,7 +93,6 @@ app.post('/add_books', function(req, res){
                 // If all went well, send the results of the query back.
                 else {
                     // Redirect back to the books page after successful insert
-                    // res.redirect('/books.hbs');
                     res.send(rows);
                 }
             })
