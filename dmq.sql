@@ -41,7 +41,6 @@ values(
 
 insert into Orders(
     userID,
-    customerName,
     addressLine1,
     addressLine2,
     city,
@@ -55,7 +54,6 @@ insert into Orders(
 )
 values(
     :userIDInput,
-    :customerNameInput,
     :addressLine1Input,
     :addressLine2Input,
     :cityInput,

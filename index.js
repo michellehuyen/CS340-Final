@@ -172,12 +172,16 @@ app.put('/update_user', function (req, res, next) {
     ORDERS
 */
 app.get('/orders.hbs', function(req, res) {
+    // let getOrders = "SELECT * FROM Orders;";
+    // db.pool.query(getOrders, function(error, rows, fields){
+    //     let getNames = "SELECT fname, lname FROM Users;";
+    //     db.pool.query(getNames, function(error, nameList, fields) {
+    //         res.render('orders', { data: rows, names: nameList });
+    //     });
+    // })
     let getOrders = "SELECT * FROM Orders;";
-    db.pool.query(getOrders, function(error, rows, fields){
-        let getNames = "SELECT fname, lname FROM Users;";
-        db.pool.query(getNames, function(error, nameList, fields) {
-            res.render('orders', { data: rows, names: nameList });
-        });
+    db.pool.query(getOrders, function(error, rows, fields) {
+        res.render('orders', {data: rows})
     })
 })
 
@@ -191,8 +195,6 @@ app.post('/add_orders', function(req, res){
 
     query1 = `INSERT INTO Orders (userID, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
     VALUES ('${userID}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', ${postalCode}, '${data.orderDate}', '${data.orderStatus}', ${quantity}, ${totalDue}, '${data.paymentMethod}')`;
-    // query1 = `INSERT INTO Orders (userID, customerName, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
-    // VALUES ('${userID}', '${data.customerName}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', ${postalCode}, '${data.orderDate}', '${data.orderStatus}', ${quantity}, ${totalDue}, '${data.paymentMethod}')`;
 
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
