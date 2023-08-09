@@ -25,6 +25,10 @@ addOrdersForm.addEventListener("submit", function (e) {
     let inputTotalDue = document.getElementById("totalDue");
     let inputPaymentMethod = document.getElementById("paymentMethod");
 
+    if (inputAddrLine2 === undefined || inputAddrLine2 === null) {
+        return;
+    }
+
     // Get the values from the form fields
     let userIDValue = inputUserID.value;
     // let customerNameValue = inputCustomerName.value;
