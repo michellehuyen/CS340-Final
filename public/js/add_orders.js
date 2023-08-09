@@ -126,6 +126,8 @@ addRowToTable = (data) => {
     let totalDueCell = document.createElement("TD");
     let paymentMethodCell = document.createElement("TD");
 
+    let deleteCell = document.createElement("TD");
+
     // Fill the cells with correct data
     idCell.innerText = newRow.orderID;
     userIDCell.innerText = newRow.userID;
@@ -141,6 +143,12 @@ addRowToTable = (data) => {
     totalDueCell.innerText = newRow.totalDue;
     paymentMethodCell.innerText = newRow.paymentMethod;
 
+    deleteCell = document.createElement("button");
+    deleteCell.innerHTML = "Delete";
+    deleteCell.onclick = function() {
+        deleteOrder(newRow.orderID);
+    };
+
     // Add the cells to the row 
     row.appendChild(idCell);
     row.appendChild(userIDCell);
@@ -155,7 +163,11 @@ addRowToTable = (data) => {
     row.appendChild(quantityCell);
     row.appendChild(totalDueCell);
     row.appendChild(paymentMethodCell);
-    
+    row.appendChild(deleteCell);
+
+    // Add a row attribute so the deleteRow function can find a newly added row
+    row.setAttribute('data-value', newRow.orderID);
+
     // Add the row to the table
     currentTable.appendChild(row);
 }

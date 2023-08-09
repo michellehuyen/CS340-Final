@@ -1,3 +1,5 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <!-- navigation bar -->
 <nav>
     <a href="/">Home</a>
@@ -39,7 +41,7 @@
 
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
-        <tr>
+        <tr data-value={{this.orderID}}>
             <td>{{this.orderID}}</td>
             <td>{{this.userID}}</td>
             {{!-- <td>{{this.customerName}}</td> --}}
@@ -53,10 +55,12 @@
             <td>{{this.quantity}}</td>
             <td>{{this.totalDue}}</td>
             <td>{{this.paymentMethod}}</td>
+            <td><button onclick="deleteOrder({{this.orderID}})">Delete</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
+<script src="./js/delete_order.js"></script>
 
 <br>
 
@@ -144,17 +148,23 @@
 </form>
 <script src="./js/add_orders.js"></script>
 
-<br>
+{{!-- <br>
 
 <h2>Delete Order</h2>
 <form id="cancel-order">
     <label for="orderID">orderID:</label>
     <br>
     <input type="number" id="orderID" name="orderID">
+    <select id="orderID" name="orderID">
+        <option value="">Select an orderID</option>
+        {{#each data}}
+        <option value="{{this.orderID}}">{{this.orderID}}</option>
+        {{/each}}
+    </select>
     <br><br><br>
 
     <input type="submit" value="Submit">
     <br>
-</form>
+</form> --}}
 
 <br><br>
