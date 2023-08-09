@@ -120,7 +120,7 @@ values
 
 -- Insert values into the Orders table
 INSERT INTO Orders (
-    -- userID,
+    userID,
     customerName,
     addressLine1,
     addressLine2,
@@ -135,7 +135,7 @@ INSERT INTO Orders (
 )
 VALUES
 (
-    -- 1,
+    1,
     "Sam Doe",
     "1234 Main st.",
     NULL,
@@ -149,7 +149,7 @@ VALUES
     "visa 0978"
 ),
 (
-    -- 2,
+    2,
     "Joy Soh",
     "5678 Canyon Road",
     NULL,
@@ -163,7 +163,7 @@ VALUES
     "mastercard 8765"
 ),
 (
-    -- 3,
+    3,
     "Bill Goldberg",
     "210 Bowman St.",
     "APT. #G300",
