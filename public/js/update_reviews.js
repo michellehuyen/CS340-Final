@@ -1,3 +1,7 @@
+// Citation for the following file
+// Adapted from Step 8 - Dynamically Updating Data
+// Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
 // Get the objects we need to modify
 let updateReviewForm = document.getElementById('update-review');
 

@@ -1,3 +1,7 @@
+// Citation for the following file:
+// Adapted from Step 5 - Adding New Data
+// Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%205%20-%20Adding%20New%20Data
+
 // Get the objects we need to modify
 let addOrdersForm = document.getElementById('add-order');
 
