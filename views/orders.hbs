@@ -42,7 +42,7 @@
         <tr>
             <td>{{this.orderID}}</td>
             <td>{{this.userID}}</td>
-            <td>{{this.customerName}}</td>
+            {{!-- <td>{{this.customerName}}</td> --}}
             <td>{{this.addressLine1}}</td>
             <td>{{this.addressLine2}}</td>
             <td>{{this.city}}</td>
@@ -62,27 +62,27 @@
 
 <h2>Add Order</h2>
 <form id="add-order">
-    {{!-- <label for="userID">userID:</label> --}}
-    {{!-- <br> --}}
+    <label for="userID">userID:</label>
+    <br>
     {{!-- <input type="number" id="userID" name="userID"> --}}
-    {{!-- <select id="userID" name="userID">
+    <select id="userID" name="userID">
         <option value="">Select a UserID</option>
         {{#each data}}
         <option value="{{this.userID}}">{{this.userID}}</option>
         {{/each}}
-    </select> --}}
-    {{!-- <br><br> --}}
+    </select>
+    <br><br>
 
-    <label for="customerName">Customer Name:</label>
-    <br>
+    {{!-- <label for="customerName">Customer Name:</label>
+    <br> --}}
     {{!-- <input type="text" id="customerName" name="customerName"> --}}
-    <select id="customerName" name="customerName">
+    {{!-- <select id="customerName" name="customerName">
         <option value="">Select a Customer</option>
         {{#each data}}
         <option value="{{this.customerName}}">{{this.customerName}}</option>
         {{/each}}
     </select>
-    <br><br>
+    <br><br> --}}
 
     <label for="addressLine1">Address Line 1:</label>
     <br>

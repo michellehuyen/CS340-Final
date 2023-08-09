@@ -8,22 +8,22 @@ addOrdersForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Get form fields we need to get data from
-    // let inputUserID = document.getElementById("userID");
-    let inputCustomerName = document.getElementById("customerName");
+    let inputUserID = document.getElementById("userID");
+    // let inputCustomerName = document.getElementById("customerName");
     let inputAddrLine1 = document.getElementById("addressLine1");
     let inputAddrLine2 = document.getElementById("addressLine2");
     let inputCity = document.getElementById("city");
     let inputState = document.getElementById("state");
     let inputPostalCode = document.getElementById("postalCode");
     let inputOrderDate = document.getElementById("orderDate");
-    let inputOrderStatus = document.getElementById("orderState");
+    let inputOrderStatus = document.getElementById("orderStatus");
     let inputQuantity = document.getElementById("quantity");
     let inputTotalDue = document.getElementById("totalDue");
     let inputPaymentMethod = document.getElementById("paymentMethod");
 
     // Get the values from the form fields
-    // let userIDValue = inputUserID.value;
-    let customerNameValue = inputCustomerName.value;
+    let userIDValue = inputUserID.value;
+    // let customerNameValue = inputCustomerName.value;
     let addrLine1Value = inputAddrLine1.value;
     let addrLine2Value = inputAddrLine2.value;
     let cityValue = inputCity.value;
@@ -35,10 +35,19 @@ addOrdersForm.addEventListener("submit", function (e) {
     let totalDueValue = inputTotalDue.value;
     let paymentMethodValue = inputPaymentMethod.value;
 
+
+    // customerNameValue = customerNameValue.replace(/'/g, "''");
+    addrLine1Value = addrLine1Value.replace(/'/g, "''");
+    addrLine2Value = addrLine2Value.replace(/'/g, "''");
+    cityValue = cityValue.replace(/'/g, "''");
+    stateValue = stateValue.replace(/'/g, "''");
+    paymentMethodValue = paymentMethodValue.replace(/'/g, "''");
+
+
     // Put our data we want to send in a javascript object
     let data = {
-        // userID: userIDValue,
-        customerName: customerNameValue,
+        userID: userIDValue,
+        // customerName: customerNameValue,
         addressLine1: addrLine1Value,
         addressLine2: addrLine2Value,
         city: cityValue,
@@ -50,7 +59,7 @@ addOrdersForm.addEventListener("submit", function (e) {
         totalDue: totalDueValue,
         paymentMethod: paymentMethodValue
     }
-    
+
     // Setup our AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add_orders", true);
@@ -64,8 +73,8 @@ addOrdersForm.addEventListener("submit", function (e) {
             addRowToTable(xhttp.response);
 
             // Clear the input fields for another transaction
-            // inputUserID.value = '';
-            inputCustomerName.value = '';
+            inputUserID.value = '';
+            // inputCustomerName.value = '';
             inputAddrLine1.value = '';
             inputAddrLine2.value = '';
             inputCity.value = '';
@@ -105,7 +114,7 @@ addRowToTable = (data) => {
     let row = document.createElement("TR");
     let idCell = document.createElement("TD");
     let userIDCell = document.createElement("TD");
-    let customerNameCell = document.createElement("TD");
+    // let customerNameCell = document.createElement("TD");
     let addrLine1Cell = document.createElement("TD");
     let addrLine2Cell = document.createElement("TD");
     let cityCell = document.createElement("TD");
@@ -120,7 +129,7 @@ addRowToTable = (data) => {
     // Fill the cells with correct data
     idCell.innerText = newRow.orderID;
     userIDCell.innerText = newRow.userID;
-    customerNameCell.innerText = newRow.customerName;
+    // customerNameCell.innerText = newRow.customerName;
     addrLine1Cell.innerText = newRow.addressLine1;
     addrLine2Cell.innerText = newRow.addressLine2;
     cityCell.innerText = newRow.city;
@@ -135,7 +144,7 @@ addRowToTable = (data) => {
     // Add the cells to the row 
     row.appendChild(idCell);
     row.appendChild(userIDCell);
-    row.appendChild(customerNameCell);
+    // row.appendChild(customerNameCell);
     row.appendChild(addrLine1Cell);
     row.appendChild(addrLine2Cell);
     row.appendChild(cityCell);

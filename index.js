@@ -41,12 +41,25 @@ app.get('/', function(req, res) {
     BOOKS
 */
 app.get('/books.hbs', function(req, res) {
-    //res.sendFile(path.join(__dirname + '/books.html'));
     let getBooks = "SELECT * FROM Books;";
     db.pool.query(getBooks, function(error, rows, fields){
         res.render('books', {data: rows})
     })
 })
+
+app.get('/get_books', function(req, res) {
+    let query1 = `SELECT * FROM Books WHERE title LIKE "${req.query.title}%"`;
+    db.pool.query(query1, function(error, rows, fields) {
+        if (error) {
+            console.log(error)
+            res.sendStatus(400);
+        }
+        else {
+            res.send(rows);
+        }
+    })
+})
+
 
 app.post('/add_books', function(req, res){
     // Capture the incoming data and parse it back to a JS object
@@ -120,7 +133,7 @@ app.post('/add_users', function(req, res){
     })
 })
 
-app.put('/update-user', function (req, res, next) {
+app.put('/update_user', function (req, res, next) {
     let data = req.body;
 
     let userID = parseInt(data.userID);
@@ -161,16 +174,26 @@ app.put('/update-user', function (req, res, next) {
 app.get('/orders.hbs', function(req, res) {
     let getOrders = "SELECT * FROM Orders;";
     db.pool.query(getOrders, function(error, rows, fields){
-        res.render('orders', {data: rows})
+        let getNames = "SELECT fname, lname FROM Users;";
+        db.pool.query(getNames, function(error, nameList, fields) {
+            res.render('orders', { data: rows, names: nameList });
+        });
     })
 })
 
 app.post('/add_orders', function(req, res){
     let data = req.body;
-    let userID = parseInt(data.userID);
 
-    query1 = `INSERT INTO Orders (userID, customerName, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
-    VALUES ('${userID}', '${data.customerName}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', '${data.postalCode}', '${data.orderDate}', '${data.orderStatus}',, '${data.quantity}', '${data.totalDue}', '${data.paymentMethod}')`;
+    let userID = parseInt(data.userID);
+    let postalCode = parseInt(data.postalCode);
+    let quantity = parseInt(data.quantity);
+    let totalDue = parseFloat(data.totalDue);
+
+    query1 = `INSERT INTO Orders (userID, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
+    VALUES ('${userID}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', ${postalCode}, '${data.orderDate}', '${data.orderStatus}', ${quantity}, ${totalDue}, '${data.paymentMethod}')`;
+    // query1 = `INSERT INTO Orders (userID, customerName, addressLine1, addressLine2, city, state, postalCode, orderDate, orderStatus, quantity, totalDue, paymentMethod)
+    // VALUES ('${userID}', '${data.customerName}', '${data.addressLine1}', '${data.addressLine2}', '${data.city}', '${data.state}', ${postalCode}, '${data.orderDate}', '${data.orderStatus}', ${quantity}, ${totalDue}, '${data.paymentMethod}')`;
+
     db.pool.query(query1, function(error, rows, fields) {
         if (error) {
             console.log(error)
@@ -233,7 +256,7 @@ app.post('/add_reviews', function(req, res){
     })
 })
 
-app.put('/update-review', function (req, res, next) {
+app.put('/update_review', function (req, res, next) {
     let data = req.body;
 
     let reviewID = parseInt(data.reviewID);

@@ -19,6 +19,8 @@ addBooksForm.addEventListener("submit", function (e) {
     let genreValue = inputGenre.value;
     let priceValue = inputPrice.value;
 
+    // use the site below to learn how to replace the single quotes with double quotes
+    // https://stackoverflow.com/questions/16450250/how-do-i-replace-single-quotes-with-double-quotes-in-javascript
     titleValue = titleValue.replace(/'/g, "''");
     authorValue = authorValue.replace(/'/g, "''");
     genreValue = genreValue.replace(/'/g, "''");
