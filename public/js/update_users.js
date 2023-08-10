@@ -12,20 +12,20 @@ updatePersonForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Get form fields we need to get data from
-    let inputUserID = document.getElementById("update-userID");
+    let inputCustomer = document.getElementById("update-customer");
     let inputFName = document.getElementById("update-fName");
     let inputLName = document.getElementById("update-lName");
     let inputEmail = document.getElementById("update-email");
 
     // Get the values from the form fields
-    let userIDValue = inputUserID.value;
+    let customerValue = inputCustomer.value;
     let fNameValue = inputFName.value;
     let lNameValue = inputLName.value;
     let emailValue = inputEmail.value;
 
     // Put our data we want to send in a javascript object
     let data = {
-        userID: userIDValue,
+        userID: customerValue,
         fName: fNameValue,
         lName: lNameValue,
         email: emailValue
@@ -43,9 +43,9 @@ updatePersonForm.addEventListener("submit", function (e) {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
 
             // Add the new data to the table
-            updateRow(data, userIDValue);
+            updateRow(data, customerValue);
 
-            inputUserID.value = 'Select a userID';
+            inputCustomer.value = 'Select a Customer';
             inputFName.value = '';
             inputLName.value = '';
             inputEmail.value = '';
@@ -62,7 +62,7 @@ updatePersonForm.addEventListener("submit", function (e) {
 })
 
 
-function updateRow(data, userID){
+function updateRow(data, customer){
     // let parsedData = JSON.parse(data);
     
     let table = document.getElementById("users_table");
@@ -70,7 +70,7 @@ function updateRow(data, userID){
     for (let i = 0, row; row = table.rows[i]; i++) {
        //iterate through rows
        //rows would be accessed using the "row" variable assigned in the for loop
-       if (table.rows[i].getAttribute("data-value") == userID) {
+       if (table.rows[i].getAttribute("data-value") == customer) {
 
             // Get the location of the row where we found the matching user ID
             let updateRowIndex = table.getElementsByTagName("tr")[i];

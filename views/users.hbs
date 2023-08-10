@@ -77,12 +77,12 @@
 
 <h2>Update User</h2>
 <form id="update-user">
-    <label for="userID">userID:</label>
+    <label for="customer">Customer:</label>
     <br>
-    <select name="update-userID" id="update-userID">
-        <option value="Select a userID">Select a userID</option>
+    <select name="update-customer" id="update-customer">
+        <option value="Select a customer">Select a Customer</option>
         {{#each data}}
-        <option value="{{this.userID}}">{{this.userID}}</option>
+        <option value="{{this.userID}}">{{this.fName}} {{this.lName}}</option>
         {{/each}}
     </select>
     <br><br>
